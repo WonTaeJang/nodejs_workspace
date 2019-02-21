@@ -40,7 +40,8 @@ app.post("/Login_Config_Post", function(req, res){
 
 	console.log("uId: " + uId + " uPw: " + uPw );
 
-	res.send("post 환영합니다~");
+	res.sendFile(__dirname + "/main.html");
+	//res.send("post 환영합니다~");
 });
 
 

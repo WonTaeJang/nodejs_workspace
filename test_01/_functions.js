@@ -6,9 +6,27 @@ var GuGuDan = num => {
 
 // stack
 class _Stack{
-    top = 1;
+    constructor(){
+        this.top = -1;
+        this._array = new Array;
+    }
 
     add(int) {
-        return top + int;
+        return this.top + int;
     };
+
+    // 값을 넣으면 스택이 쌓인다.
+    push(num){
+        this._array.unshift(num);
+
+        console.log(this._array);
+    };
+
+    pop(){
+
+    };
+
+    
+
+
 }

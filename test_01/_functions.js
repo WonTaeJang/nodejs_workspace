@@ -19,12 +19,20 @@ class _Stack{
     push(num){
         this._array.unshift(num);
 
-        console.log(this._array);
+        this.top += 1;
+        
     };
 
     pop(){
+        
+        this.top += -1;
+        this._array.shift(num);
 
     };
+
+    display(){
+        console.log(this._array + "top: " + top);
+    }
 
     
 

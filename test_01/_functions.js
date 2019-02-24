@@ -11,10 +11,6 @@ class _Stack{
         this._array = new Array;
     }
 
-    add(int) {
-        return this.top + int;
-    };
-
     // 값을 넣으면 스택이 쌓인다.
     push(num){
         this._array.unshift(num);
@@ -24,11 +20,16 @@ class _Stack{
     };
 
     pop(){
-        
-        this.top += -1;
-        this._array.shift(num);
-
+        if(top > -1){
+            this.top += -1;
+            this._array.shift(num);
+        }
     };
+
+    reset(){
+        this._array = new Array();
+        this.top = -1;
+    }
 
     display(){
         console.log(this._array + "top: " + top);

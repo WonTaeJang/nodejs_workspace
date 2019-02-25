@@ -39,3 +39,13 @@ class _Stack{
 
 
 }
+
+// 테트리스 게임을 만들고 싶음
+// 
+
+class _Block{
+    constructor(name){
+        this.name = name; 
+    }
+}
+

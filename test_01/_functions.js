@@ -46,21 +46,23 @@ class _Stack{
 class _Block{
     constructor(name){
         this.name = name; 
+        this.direction = 0;
+        this.color = red;   
     }
 }
 
-function allowDrop(ev){
+function allowDrop(ev) {
     ev.preventDefault();
-}
-
-function drag(ev){
+  }
+  
+  function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
+  }
+  
+  function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-}
+  }
 
 

@@ -1,62 +1,66 @@
-var pos = {
-    drawable: false,
-    x: -1,
-    y: -1
-};
-
-window.onload = function(){
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-
-    canvas.addEventListener("mousedown",    listener);
-    canvas.addEventListener("mousemove",    listener);
-    canvas.addEventListener("mouseup",      listener);
-    canvas.addEventListener("mouseout",     listener);
-}
-
-function listener(event){
-    switch(event.type){
-        case "mousedown":
-            initDraw(event);    // 클릭했을 떄 버튼을 누른 순간 down이벤트가 발생하고, moveTo()를 이용하여 해당좌표로 pos를 변경시켜준다.
-            break;
-        case "mousemove":
-            if(pos.drawable)
-                draw(event);    // down상태에서 이동을 하면 move이벤트가 발생하고, lineTo()를 이용해서 라인을 그려준다.
-            break;
-        case "mouseout":
-        case "mouseup":
-            finishDraw();       // 마우스가 캔버스에서 벗어나면 out이벤트, 버튼을 떼는 순간 up 이벤트가 발생하며, 그리기를 중지한다.
-            break;
-    }
-}
-
-function initDraw(event){
+ // drawline 함수정의
+function drawline(sx, sy, ex, ey){
     ctx.beginPath();
-    pos.drawable = true;
-    var coors = getPosition(event);
-    pos.X = coors.X;
-    pos.Y = coors.Y;
-    ctx.moveTo(pos.X, pos.Y);
-}
-
-function draw(canvas){
-    var coors = getPosition(event);
-    ctx.lineTo(coors.X, coors.Y);
-
-    pos.X = coors.X;
-    pos.Y = coors.Y;
-
+    ctx.moveTo(sx, sy);
+    ctx.lineTo(ex,ey);
     ctx.stroke();
 }
 
-function finishDraw(){
-    pos.drawable = false;
-    pos.X = -1;
-    pos.Y = -1;
+function draw_closePath(num){
+    ctx.beginPath();
+    ctx.moveTo(150,10);
+    ctx.lineTo(250,150);
+    ctx.lineTo(50,150);
+    ctx.closePath();
+    if(num == 1){ctx.stroke();}
+    else if(num == 2){ctx.fill();}
 }
 
-function getPosition(event){
-    var x= event.pageX - canvas.offsetLeft;
-    var y= event.pageY - canvas.offsetTop;
-    return {X: x, Y:y};
+// 분리된 두개의 사각형
+function draw_pathrect(){
+    ctx.beginPath();
+    ctx.rect(10,10,100,80);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.rect(150,10,100,80);
+    ctx.fill();
+}
+
+//원호 그리기
+function draw_arc(){
+    ctx.beginPath();
+    ctx.arc(100,100,70,0*Math.PI / 180, 120 * Math.PI / 180, false);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(300,100,70,0*Math.PI / 180, 120 * Math.PI / 180, true);
+    ctx.stroke();
+}
+
+//연결된 원호
+function draw_arc2(){
+    ctx.beginPath();
+    ctx.arc(100,100,70,0*Math.PI / 180, 120 * Math.PI / 180, false);
+    ctx.arc(300,100,70,0*Math.PI / 180, 120 * Math.PI / 180, true);
+    ctx.stroke();
+}
+
+// 파이, 부채꼴 그리기
+function draw_pie(){
+    ctx.beginPath();
+    ctx.arc(100,100,70,0*Math.PI/180, 120*Math.PI/180);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(300,100);
+    ctx.arc(300,100,70,0*Math.PI/180, 120*Math.PI/180);
+    ctx.fill();
+}
+
+// 원 그리기
+function draw_circle(){
+    ctx.beginPath();
+    ctx.arc(200,100,100,0, 2*Math.PI);  // x,y,r
+    ctx.stroke();
 }

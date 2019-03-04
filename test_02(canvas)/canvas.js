@@ -116,3 +116,29 @@ CanvasRenderingContext2D.prototype.fillRoundRect = function (x, y, w, h, r) {
     this.roundRect(x, y, w, h, r);
     this.fill();
 }
+
+// 모서리가 둥근 삼각형
+function draw_triangle() {
+    ctx.beginPath();
+    ctx.moveTo(14, 152);
+    ctx.arcTo(90, 0, 180, 180, 20);
+    ctx.arcTo(180, 180, 0, 180, 20);
+    ctx.arcTo(0, 180, 90, 0, 20);
+    ctx.stroke();
+}
+
+// 2차 곡선
+function draw_curve() {
+    ctx.beginPath();
+    ctx.moveTo(100, 10);
+    ctx.quadraticCurveTo(200, 200, 300, 10);
+    ctx.stroke();
+}
+
+// 3차 곡선
+function draw_bezier() {
+    ctx.beginPath();
+    ctx.moveTo(10, 10);
+    ctx.bezierCurveTo(300, 10, 10, 300, 200, 150);
+    ctx.stroke();
+}

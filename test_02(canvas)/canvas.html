@@ -27,6 +27,8 @@
                     //draw_pathrect();
                     //draw_circle();
                     //draw_pie();
+                    //draw_arcTo();
+                    //draw_roundarc();
                 }
 
                 function draw(){
@@ -39,25 +41,14 @@
                     // drawline(10,10,250,150);
                     // drawline(10,10,50,150);
                     
-                    ctx.strokeCircle(100,100,80);
-                    ctx.fillCircle(300,100,80);
+                    // draw circle
+                    // ctx.strokeCircle(100,100,80);
+                    // ctx.fillCircle(300,100,80);
+
+                    // draw roundRect
+                    ctx.strokeRoundRect(10,10,120,100,20);
+                    ctx.fillRoundRect(150,10,120,100,30);
                 }
-
-
-                // 원 매소드 정의
-                CanvasRenderingContext2D.prototype.strokeCircle = function(x,y,r){
-                    this.beginPath();
-                    this.arc(x,y,r,0,2*Math.PI);
-                    this.stroke();
-                }
-
-                CanvasRenderingContext2D.prototype.fillCircle = function(x,y,r){
-                    this.beginPath();
-                    this.arc(x,y,r,0,2*Math.PI);
-                    this.fill();
-                }
-
-
 
 
 

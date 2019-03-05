@@ -31,7 +31,12 @@
                     //draw_roundarc();
                     //draw_triangle();
                     //draw_curve();
-                    draw_bezier();
+                    //draw_bezier();
+
+                    //draw_RGBA();
+                    //draw_colorStyle();
+                    //draw_globalalpha();
+                    draw_lineargradient();
                 }
 
                 function draw(){
@@ -49,35 +54,45 @@
                     // ctx.fillCircle(300,100,80);
 
                     // draw roundRect
-                    ctx.strokeRoundRect(10,10,120,100,20);
-                    ctx.fillRoundRect(150,10,120,100,30);
+                    // ctx.strokeRoundRect(10,10,120,100,20);
+                    // ctx.fillRoundRect(150,10,120,100,30);
+
+
                 }
 
-                // 모서리가 둥근 삼각형
-                function draw_triangle(){
-                    ctx.beginPath();
-                    ctx.moveTo(14,152);
-                    ctx.arcTo(90,0,180,180,20);
-                    ctx.arcTo(180,180,0,180,20);
-                    ctx.arcTo(0,180,90,0,20);
-                    ctx.stroke();
+                function draw_colorStyle(){
+                    // draw colorstyle
+                    ctx.fillStyle = "yellow";
+                    ctx.fillRect(10,10,200,100);
+                    
+                    ctx.lineWidth = 8;
+                    ctx.strokeStyle = "#ff0000";
+                    ctx.strokeRect(10,10,200,100);
                 }
 
-                // 2차 곡선
-                function draw_curve(){
-                    ctx.beginPath();
-                    ctx.moveTo(100,10);
-                    ctx.quadraticCurveTo(200,200,300,10);
-                    ctx.stroke();
+                function draw_RGBA(){
+                    ctx.fillStyle = "rgb(0,0,255)";
+                    ctx.fillRect(10,10,100,100);
+                    ctx.fillStyle = "rgba(255,0,0,0.5)";    // a : 투명도
+                    ctx.fillRect(50,50,100,100);
                 }
 
-                // 3차 곡선
-                function draw_bezier(){
-                    ctx.beginPath();
-                    ctx.moveTo(10,10);
-                    ctx.bezierCurveTo(300,10,10,300,200,150);
-                    ctx.stroke();
+                function draw_globalalpha(){
+                    ctx.fillStyle = "blue";
+                    ctx.fillRect(10,10,100,100);
+                    ctx.globalAlpha = 0.5;
+                    ctx.fillStyle = "red";
+                    ctx.fillRect(50,50,100,100);
                 }
+
+                function draw_lineargradient(){
+                    var brush = ctx.createLinearGradient(10,10,150,10);
+                    brush.addColorStop(0, "white");
+                    brush.addColorStop(1, "black");
+                    ctx.fillStyle = brush;
+                    ctx.fillRect(10,10,140,140);
+                }
+
 
 
                 

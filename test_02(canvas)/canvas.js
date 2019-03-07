@@ -142,3 +142,104 @@ function draw_bezier() {
     ctx.bezierCurveTo(300, 10, 10, 300, 200, 150);
     ctx.stroke();
 }
+
+function draw_colorStyle(){
+    // draw colorstyle
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(10,10,200,100);
+    
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = "#ff0000";
+    ctx.strokeRect(10,10,200,100);
+}
+
+function draw_RGBA(){
+    ctx.fillStyle = "rgb(0,0,255)";
+    ctx.fillRect(10,10,100,100);
+    ctx.fillStyle = "rgba(255,0,0,0.5)";    // a : 투명도
+    ctx.fillRect(50,50,100,100);
+}
+
+function draw_globalalpha(){
+    ctx.fillStyle = "blue";
+    ctx.fillRect(10,10,100,100);
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = "red";
+    ctx.fillRect(50,50,100,100);
+}
+
+// 직선 그래디언트
+function draw_lineargradient(){
+    var brush = ctx.createLinearGradient(10,10,150,10);
+    brush.addColorStop(0, "white");
+    brush.addColorStop(1, "black");
+    ctx.fillStyle = brush;
+    ctx.fillRect(10,10,140,140);
+}
+
+function draw_lineargradient2(){
+    var brush = ctx.createLinearGradient(10,10,150,10);
+    brush.addColorStop(0, "yellow");
+    brush.addColorStop(0.5, "blue");
+    brush.addColorStop(1, "red");
+    ctx.fillStyle = brush;
+    ctx.fillRect(10,10,140,140);
+}
+
+function draw_lineargradient3(){
+    var brush = ctx.createLinearGradient(10,10,10,150);
+    brush.addColorStop(0, "white");
+    brush.addColorStop(1, "black");
+    ctx.fillStyle = brush;
+    ctx.fillRect(10,10,140,140);
+
+    var brush = ctx.createLinearGradient(210,10,350,150);
+    brush.addColorStop(0, "yellow");
+    brush.addColorStop(1, "red");
+    ctx.fillStyle = brush;
+    ctx.fillRect(210,10,140,140);
+}
+
+//rainbow
+function draw_rainbow(){
+    var brush = ctx.createLinearGradient(10,150,350,150);
+    brush.addColorStop(0, "red");
+    brush.addColorStop(0.3, "yellow");
+    brush.addColorStop(0.5, "green");
+    brush.addColorStop(0.7, "blue");
+    brush.addColorStop(1, "violet");
+    ctx.fillStyle = brush;
+    ctx.fillRect(10,10,340,140);
+}
+
+// 중심점 위치 지정
+function draw_lineargradient4(){
+    var brush = ctx.createLinearGradient(10,10,150,10);
+    brush.addColorStop(0, "white");
+    brush.addColorStop(0.3, "gray");
+    brush.addColorStop(1, "black");
+    ctx.fillStyle = brush;
+    ctx.fillRect(10,10,140,140);
+
+    var brush = ctx.createLinearGradient(210,10,350,10);
+    brush.addColorStop(0, "white");
+    brush.addColorStop(0.7, "gray");
+    brush.addColorStop(1, "black");
+    ctx.fillStyle = brush;
+    ctx.fillRect(210,10,140,140);
+}
+
+// 채색 영역 바깥의 시작점
+function draw_lineargradient5(){
+    var brush = ctx.createLinearGradient(100,10,200,10);
+    brush.addColorStop(0, "yellow");
+    brush.addColorStop(1, "red");
+    ctx.fillStyle = brush;
+    ctx.fillRect(10,10,300,80);
+
+    var brush = ctx.createLinearGradient(0,110,400,110);
+    brush.addColorStop(0, "yellow");
+    brush.addColorStop(1, "red");
+    ctx.fillStyle = brush;
+    ctx.fillRect(10,110,300,80);
+}

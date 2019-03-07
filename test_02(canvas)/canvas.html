@@ -10,6 +10,7 @@
     <body>
         <!-- http://www.soen.kr/html5/canvas/canvas.html -->
         <div>
+           
             <p> 캔버스에 직접 그린다 </p>
             <canvas id="canvas" width="500" height="500"></canvas>
 
@@ -40,7 +41,12 @@
                     //draw_lineargradient2();
                     //draw_lineargradient3();
                     //draw_rainbow();
-                    draw_lineargradient4();
+                    //draw_lineargradient4();
+                    //draw_lineargradient5();
+                    //draw_radialgradient();
+                    //draw_radialgradient2();
+                    draw_radialgradient3();
+                    
                 }
 
                 function draw(){
@@ -154,9 +160,49 @@
                 function draw_lineargradient5(){
                     var brush = ctx.createLinearGradient(100,10,200,10);
                     brush.addColorStop(0, "yellow");
-                    
+                    brush.addColorStop(1, "red");
+                    ctx.fillStyle = brush;
+                    ctx.fillRect(10,10,300,80);
+
+                    var brush = ctx.createLinearGradient(0,110,400,110);
+                    brush.addColorStop(0, "yellow");
+                    brush.addColorStop(1, "red");
+                    ctx.fillStyle = brush;
+                    ctx.fillRect(10,110,300,80);
                 }
 
+                // 원형 그래디언트
+                function draw_radialgradient(){
+                    ctx.beginPath();
+                    ctx.arc(100,100,80,0,2*Math.PI,true);
+                    var brush = ctx.createRadialGradient(100,100,0,100,100,80);
+                    brush.addColorStop(0,"white");
+                    brush.addColorStop(1,"black");
+                    ctx.fillStyle = brush;
+                    ctx.fill();
+                }
+
+                // 중심을 약간 위로
+                function draw_radialgradient2(){
+                    ctx.beginPath();
+                    ctx.arc(100, 100, 80, 0,2*Math.PI, true);
+                    var brush = ctx.createRadialGradient(70,70,0,100,100,80);
+                    brush.addColorStop(0,"white");
+                    brush.addColorStop(1,"black");
+                    ctx.fillStyle = brush;
+                    ctx.fill();
+                }
+
+                // 중심과 바깥원 이동하기
+                function draw_radialgradient3(){
+                    ctx.beginPath();
+                    ctx.arc(100,100,80,0,2*Math.PI, true);
+                    var brush = ctx.createRadialGradient(70,70,0,70,70,80);
+                    brush.addColorStop(0,"white");
+                    brush.addColorStop(1,"black");
+                    ctx.fillStyle = brush;
+                    ctx.fill();
+                }
 
 
                 

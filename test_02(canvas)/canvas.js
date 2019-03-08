@@ -143,103 +143,136 @@ function draw_bezier() {
     ctx.stroke();
 }
 
-function draw_colorStyle(){
+function draw_colorStyle() {
     // draw colorstyle
     ctx.fillStyle = "yellow";
-    ctx.fillRect(10,10,200,100);
-    
+    ctx.fillRect(10, 10, 200, 100);
+
     ctx.lineWidth = 8;
     ctx.strokeStyle = "#ff0000";
-    ctx.strokeRect(10,10,200,100);
+    ctx.strokeRect(10, 10, 200, 100);
 }
 
-function draw_RGBA(){
+function draw_RGBA() {
     ctx.fillStyle = "rgb(0,0,255)";
-    ctx.fillRect(10,10,100,100);
+    ctx.fillRect(10, 10, 100, 100);
     ctx.fillStyle = "rgba(255,0,0,0.5)";    // a : 투명도
-    ctx.fillRect(50,50,100,100);
+    ctx.fillRect(50, 50, 100, 100);
 }
 
-function draw_globalalpha(){
+function draw_globalalpha() {
     ctx.fillStyle = "blue";
-    ctx.fillRect(10,10,100,100);
+    ctx.fillRect(10, 10, 100, 100);
     ctx.globalAlpha = 0.5;
     ctx.fillStyle = "red";
-    ctx.fillRect(50,50,100,100);
+    ctx.fillRect(50, 50, 100, 100);
 }
 
 // 직선 그래디언트
-function draw_lineargradient(){
-    var brush = ctx.createLinearGradient(10,10,150,10);
+function draw_lineargradient() {
+    var brush = ctx.createLinearGradient(10, 10, 150, 10);
     brush.addColorStop(0, "white");
     brush.addColorStop(1, "black");
     ctx.fillStyle = brush;
-    ctx.fillRect(10,10,140,140);
+    ctx.fillRect(10, 10, 140, 140);
 }
 
-function draw_lineargradient2(){
-    var brush = ctx.createLinearGradient(10,10,150,10);
+function draw_lineargradient2() {
+    var brush = ctx.createLinearGradient(10, 10, 150, 10);
     brush.addColorStop(0, "yellow");
     brush.addColorStop(0.5, "blue");
     brush.addColorStop(1, "red");
     ctx.fillStyle = brush;
-    ctx.fillRect(10,10,140,140);
+    ctx.fillRect(10, 10, 140, 140);
 }
 
-function draw_lineargradient3(){
-    var brush = ctx.createLinearGradient(10,10,10,150);
+function draw_lineargradient3() {
+    var brush = ctx.createLinearGradient(10, 10, 10, 150);
     brush.addColorStop(0, "white");
     brush.addColorStop(1, "black");
     ctx.fillStyle = brush;
-    ctx.fillRect(10,10,140,140);
+    ctx.fillRect(10, 10, 140, 140);
 
-    var brush = ctx.createLinearGradient(210,10,350,150);
+    var brush = ctx.createLinearGradient(210, 10, 350, 150);
     brush.addColorStop(0, "yellow");
     brush.addColorStop(1, "red");
     ctx.fillStyle = brush;
-    ctx.fillRect(210,10,140,140);
+    ctx.fillRect(210, 10, 140, 140);
 }
 
 //rainbow
-function draw_rainbow(){
-    var brush = ctx.createLinearGradient(10,150,350,150);
+function draw_rainbow() {
+    var brush = ctx.createLinearGradient(10, 150, 350, 150);
     brush.addColorStop(0, "red");
     brush.addColorStop(0.3, "yellow");
     brush.addColorStop(0.5, "green");
     brush.addColorStop(0.7, "blue");
     brush.addColorStop(1, "violet");
     ctx.fillStyle = brush;
-    ctx.fillRect(10,10,340,140);
+    ctx.fillRect(10, 10, 340, 140);
 }
 
 // 중심점 위치 지정
-function draw_lineargradient4(){
-    var brush = ctx.createLinearGradient(10,10,150,10);
+function draw_lineargradient4() {
+    var brush = ctx.createLinearGradient(10, 10, 150, 10);
     brush.addColorStop(0, "white");
     brush.addColorStop(0.3, "gray");
     brush.addColorStop(1, "black");
     ctx.fillStyle = brush;
-    ctx.fillRect(10,10,140,140);
+    ctx.fillRect(10, 10, 140, 140);
 
-    var brush = ctx.createLinearGradient(210,10,350,10);
+    var brush = ctx.createLinearGradient(210, 10, 350, 10);
     brush.addColorStop(0, "white");
     brush.addColorStop(0.7, "gray");
     brush.addColorStop(1, "black");
     ctx.fillStyle = brush;
-    ctx.fillRect(210,10,140,140);
+    ctx.fillRect(210, 10, 140, 140);
 }
 
 // 채색 영역 바깥의 시작점
-function draw_lineargradient5(){
-    var brush = ctx.createLinearGradient(100,10,200,10);
+function draw_lineargradient5() {
+    var brush = ctx.createLinearGradient(100, 10, 200, 10);
     brush.addColorStop(0, "yellow");
     brush.addColorStop(1, "red");
     ctx.fillStyle = brush;
-    ctx.fillRect(10,10,300,80);
+    ctx.fillRect(10, 10, 300, 80);
 
-    var brush = ctx.createLinearGradient(0,110,400,110);
+    var brush = ctx.createLinearGradient(0, 110, 400, 110);
     brush.addColorStop(0, "yellow");
     brush.addColorStop(1, "red");
     ctx.fillStyle = brush;
-    ctx.fillRect(10,110,300,80);
+    ctx.fillRect(10, 110, 300, 80);
+}
+
+// 원형 그래디언트
+function draw_radialgradient() {
+    ctx.beginPath();
+    ctx.arc(100, 100, 80, 0, 2 * Math.PI, true);
+    var brush = ctx.createRadialGradient(100, 100, 0, 100, 100, 80);
+    brush.addColorStop(0, "white");
+    brush.addColorStop(1, "black");
+    ctx.fillStyle = brush;
+    ctx.fill();
+}
+
+// 중심을 약간 위로
+function draw_radialgradient2() {
+    ctx.beginPath();
+    ctx.arc(100, 100, 80, 0, 2 * Math.PI, true);
+    var brush = ctx.createRadialGradient(70, 70, 0, 100, 100, 80);
+    brush.addColorStop(0, "white");
+    brush.addColorStop(1, "black");
+    ctx.fillStyle = brush;
+    ctx.fill();
+}
+
+// 중심과 바깥원 이동하기
+function draw_radialgradient3() {
+    ctx.beginPath();
+    ctx.arc(100, 100, 80, 0, 2 * Math.PI, true);
+    var brush = ctx.createRadialGradient(70, 70, 0, 70, 70, 80);
+    brush.addColorStop(0, "white");
+    brush.addColorStop(1, "black");
+    ctx.fillStyle = brush;
+    ctx.fill();
 }

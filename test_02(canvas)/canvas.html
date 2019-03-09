@@ -54,7 +54,8 @@
                     //draw_shadow2();
                     //composite();
 
-                    savererstore();
+                    //savererstore();
+                    savererstore2();
                 }
 
                 function draw(){
@@ -163,6 +164,27 @@
 
                    ctx.restore();
                    ctx.strokeRect(210,10,60,60);
+               }
+
+               // 여러 단계 저장
+               function savererstore2(){
+                   ctx.fillStyle = "red";
+                   ctx.fillRect(10,10,50,50);
+                   ctx.save();
+
+                   ctx.fillStyle = "blue";
+                   ctx.fillRect(70,10,50,50);
+                   ctx.save();
+
+                   ctx.fillStyle = "green";
+                   ctx.fillRect(130,10,50,50);
+
+                   ctx.restore();
+                   ctx.fillRect(190,10,50,50);
+
+                   ctx.restore();
+                   ctx.fillRect(250,10,50,50);
+
                }
 
 

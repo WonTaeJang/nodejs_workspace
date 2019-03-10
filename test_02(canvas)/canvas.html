@@ -55,7 +55,9 @@
                     //composite();
 
                     //savererstore();
-                    savererstore2();
+                    //savererstore2();
+                    //draw_filltext();
+                    draw_filltext2();
                 }
 
                 function draw(){
@@ -185,6 +187,19 @@
                    ctx.restore();
                    ctx.fillRect(250,10,50,50);
 
+               }
+
+               // 텍스트 출력
+               function draw_filltext(){
+                    ctx.font="bold 50px 궁서";
+                    ctx.fillText("대한민국", 10, 60);
+                    ctx.strokeText("대한민국", 10, 120);
+               }
+
+               function draw_filltext2(){
+                   ctx.font="bold 50px 궁서";
+                   ctx.fillText("대한민국", 10, 60, 100);
+                   ctx.fillText("대한민국", 10, 120, 200);
                }
 
 

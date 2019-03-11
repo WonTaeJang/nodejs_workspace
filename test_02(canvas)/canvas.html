@@ -57,7 +57,8 @@
                     //savererstore();
                     //savererstore2();
                     //draw_filltext();
-                    draw_filltext2();
+                    //draw_filltext2();
+                    draw_fillstyle();
                 }
 
                 function draw(){
@@ -200,6 +201,17 @@
                    ctx.font="bold 50px 궁서";
                    ctx.fillText("대한민국", 10, 60, 100);
                    ctx.fillText("대한민국", 10, 120, 200);
+               }
+
+               function draw_fillstyle(){
+                   ctx.font = "bold 80px 궁서";
+
+                   ctx.fillStyle = "orange";
+                   ctx.fillText("폰트Fo38", 10, 120);
+                   
+                   ctx.lineWidth = 3;
+                   ctx.strokeStyle = "red";
+                   ctx.strokeText("폰트Fo38", 10, 120);
                }
 
 

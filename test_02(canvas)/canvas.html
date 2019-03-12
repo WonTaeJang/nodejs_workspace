@@ -58,7 +58,8 @@
                     //savererstore2();
                     //draw_filltext();
                     //draw_filltext2();
-                    draw_fillstyle();
+                    //draw_fillstyle();
+                    draw_fillstyle2();
                 }
 
                 function draw(){
@@ -205,6 +206,22 @@
 
                function draw_fillstyle(){
                    ctx.font = "bold 80px 궁서";
+
+                   ctx.fillStyle = "orange";
+                   ctx.fillText("폰트Fo38", 10, 120);
+                   
+                   ctx.lineWidth = 3;
+                   ctx.strokeStyle = "red";
+                   ctx.strokeText("폰트Fo38", 10, 120);
+               }
+
+               function draw_fillstyle2(){
+                   ctx.font = "bold 80px 궁서";
+
+                   ctx.shadowColor = "gray";
+                   ctx.shadowOffsetX = 6;
+                   ctx.shadowOffsetY = 6;
+                   ctx.shadowBlur = 12;
 
                    ctx.fillStyle = "orange";
                    ctx.fillText("폰트Fo38", 10, 120);

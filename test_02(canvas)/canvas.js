@@ -276,3 +276,151 @@ function draw_radialgradient3() {
     ctx.fillStyle = brush;
     ctx.fill();
 }
+
+// 선의 굵기
+function draw_linewidth(){
+    ctx.strokeRect(10,10,90,90);
+    ctx.lineWidth=5;
+    ctx.strokeRect(110,10,90,90);
+    ctx.lineWidth=10;
+    ctx.strokeRect(210,10,90,90);
+}
+
+// 선 끝부분의 모양
+function draw_linecap(){
+    ctx.lineWidth = 20;
+    ctx.lineCap="butt";
+    ctx.beginPath();
+    ctx.moveTo(20,20);
+    ctx.lineTo(200,20);
+    ctx.stroke();
+
+    ctx.lineCap="round";
+    ctx.beginPath();
+    ctx.moveTo(20,70);
+    ctx.lineTo(200,70);
+    ctx.stroke();
+
+    ctx.lineCap="square";
+    ctx.beginPath();
+    ctx.moveTo(20,120);
+    ctx.lineTo(200,120);
+    ctx.stroke();
+}
+
+// 선이 만나는 부분의 모양
+function linejoin(){
+    ctx.lineWidth = 20;
+    ctx.lineJoin = "bevel";
+    ctx.strokeRect(20,20,60,60);
+    ctx.lineJoin = "round";
+    ctx.strokeRect(120,20,60,60);
+    ctx.lineJoin = "miter";
+    ctx.strokeRect(220,20,60,60);
+}
+
+// 그림자
+function draw_shadow(){
+   ctx.shadowColor="gray";
+   ctx.shadowOffsetX=10;
+   ctx.shadowOffsetY=10;
+   ctx.fillRect(10,10,100,100);
+}
+
+// 흐릿한 그림자
+function draw_shadow2(){
+   ctx.shadowColor="gray";
+   ctx.shadowOffsetX=10;
+   ctx.shadowOffsetY=10;
+   ctx.shadowBlur = 10; // 흐릿하게
+   ctx.fillRect(10,10,100,100);
+}
+
+
+// 조합
+function composite(){
+   ctx.fillStyle = "blue";
+   ctx.fillRect(150,50,100,100);
+
+   ctx.fillStyle="red";
+   ctx.globalCompositeOperation = "source-over"; ctx.fillRect(120,20,60,60);
+   ctx.globalCompositeOperation = "destination-over"; ctx.fillRect(220,20,60,60);
+   ctx.globalCompositeOperation = "xor"; ctx.fillRect(120,120,60,60);
+   ctx.globalCompositeOperation = "lighter"; ctx.fillRect(220,120,60,60);
+}
+
+// 속성의 저장 및 복구
+function savererstore(){
+   ctx.strokeStyle="red";
+   ctx.lineWidth = 8;
+   ctx.strokeRect(10,10,60,60);
+   ctx.save();
+
+   ctx.strokeStyle="blue";
+   ctx.lineWidth=2;
+   ctx.strokeRect(110,10,60,60);
+
+   ctx.restore();
+   ctx.strokeRect(210,10,60,60);
+}
+
+// 여러 단계 저장
+function savererstore2(){
+   ctx.fillStyle = "red";
+   ctx.fillRect(10,10,50,50);
+   ctx.save();
+
+   ctx.fillStyle = "blue";
+   ctx.fillRect(70,10,50,50);
+   ctx.save();
+
+   ctx.fillStyle = "green";
+   ctx.fillRect(130,10,50,50);
+
+   ctx.restore();
+   ctx.fillRect(190,10,50,50);
+
+   ctx.restore();
+   ctx.fillRect(250,10,50,50);
+
+}
+
+// 텍스트 출력
+function draw_filltext(){
+    ctx.font="bold 50px 궁서";
+    ctx.fillText("대한민국", 10, 60);
+    ctx.strokeText("대한민국", 10, 120);
+}
+
+function draw_filltext2(){
+   ctx.font="bold 50px 궁서";
+   ctx.fillText("대한민국", 10, 60, 100);
+   ctx.fillText("대한민국", 10, 120, 200);
+}
+
+function draw_fillstyle(){
+   ctx.font = "bold 80px 궁서";
+
+   ctx.fillStyle = "orange";
+   ctx.fillText("폰트Fo38", 10, 120);
+   
+   ctx.lineWidth = 3;
+   ctx.strokeStyle = "red";
+   ctx.strokeText("폰트Fo38", 10, 120);
+}
+
+function draw_fillstyle2(){
+   ctx.font = "bold 80px 궁서";
+
+   ctx.shadowColor = "gray";
+   ctx.shadowOffsetX = 6;
+   ctx.shadowOffsetY = 6;
+   ctx.shadowBlur = 12;
+
+   ctx.fillStyle = "orange";
+   ctx.fillText("폰트Fo38", 10, 120);
+   
+   ctx.lineWidth = 3;
+   ctx.strokeStyle = "red";
+   ctx.strokeText("폰트Fo38", 10, 120);
+}

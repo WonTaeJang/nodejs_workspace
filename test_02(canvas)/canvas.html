@@ -15,10 +15,8 @@
             <canvas id="canvas" width="500" height="500"></canvas>
 
             <script>
-
                 var canvas;
                 var ctx;
-
                 window.onload = function(){
                     canvas = document.getElementById("canvas");
                     if(canvas == null || canvas.getContext == null) return;
@@ -33,7 +31,6 @@
                     //draw_triangle();
                     //draw_curve();
                     //draw_bezier();
-
                     //draw_RGBA();
                     //draw_colorStyle();
                     //draw_globalalpha();
@@ -49,11 +46,9 @@
                     //draw_linewidth();
                     //draw_linecap();
                     //linejoin();
-
                     //draw_shadow();
                     //draw_shadow2();
                     //composite();
-
                     //savererstore();
                     //savererstore2();
                     //draw_filltext();
@@ -63,13 +58,11 @@
                     //draw_gradienttext();
                     draw_textalign();
                 }
-
                 function draw(){
                     // draw rect
                     // ctx.strokeRect(10,10,100,100);
                     // ctx.fillRect(120,10,200,100);
                     // ctx.clearRect(170,40,80,40);
-
                     // draw line
                     // drawline(10,10,250,150);
                     // drawline(10,10,50,150);
@@ -77,14 +70,10 @@
                     // draw circle
                     // ctx.strokeCircle(100,100,80);
                     // ctx.fillCircle(300,100,80);
-
                     // draw roundRect
                     // ctx.strokeRoundRect(10,10,120,100,20);
                     // ctx.fillRoundRect(150,10,120,100,30);
-
-
                 }
-
                 // 무지개색 폰트
                 function draw_gradienttext(){
                     ctx.font = "bold 80px 궁서"
@@ -101,22 +90,43 @@
                     ctx.lineWidth = 2;
                     ctx.strokeText("폰트Fo38",10,120);
                 }
-
                 // 문자열 수평 정렬
                 function draw_textalign(){
                     ctx.font="20pt arial";
                     ctx.fillStyle = "blue";
                     ctx.fillRect(200,0,2,200);
                     ctx.fillStyle = "black";
-
                     ctx.fillText("왼쪽",200,20);
                     ctx.textAlign = "center";
                     ctx.fillText("중앙", 200, 70);
                     ctx.textAlign = "right";
                     ctx.fillText("오른쪽", 200, 110);
+
+
                 }
 
+                // 
+                function draw_textbaseline(){
+                    ctx.font = "20pt arial";
+                    ctx.filllStyle = "blue";
+                    ctx.fillRect(0,50,400,2);
+                    ctx.fillRect(0,150,400,2);
+                    ctx.filllStyle = "black";
 
+                    ctx.textBaseline = "top";
+                    ctx.fillText("top", 0, 50);
+                    ctx.textBaseline="middle"
+                    ctx.fillText("middle", 120, 50);
+                    ctx.textBaseline = "bottom"
+                    ctx.fillText("bottom", 250, 50);
+
+                    ctx.textBaseline = "hanging"
+                    ctx.fillText("hanging", 0, 150);
+                    ctx.textBaseline = "alphabetic"
+                    ctx.fillText("alphabetic", 120, 150);
+                    ctx.textBaseline = "ideographic"
+                    ctx.fillText("ideographic", 250, 150);
+                }
 
                 
             </script>

@@ -128,8 +128,13 @@
                     ctx.fillText("ideographic", 250, 150);
                 }
 
-                
-            </script>
+                    function draw_centertext() {
+                        ctx.font = "60px 궁서";
+                        ctx.textAlign = "center";
+                        ctx.textBaseline = "middle";
+                        ctx.fillText("정중앙", canvas.width / 2, canvas.height / 2);
+                    }
+                </script>
         </div>
 
         

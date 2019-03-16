@@ -128,12 +128,36 @@
                     ctx.fillText("ideographic", 250, 150);
                 }
 
-                    function draw_centertext() {
-                        ctx.font = "60px 궁서";
-                        ctx.textAlign = "center";
-                        ctx.textBaseline = "middle";
-                        ctx.fillText("정중앙", canvas.width / 2, canvas.height / 2);
-                    }
+                function draw_centertext() {
+                    ctx.font = "60px 궁서";
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.fillText("정중앙", canvas.width / 2, canvas.height / 2);
+                }
+
+                function draw_measuretext(){
+                    var x = 10;
+                    var text = "큰글자";
+
+                    ctx.font = "50px 궁서";
+                    ctx.fillStyle = "blue";
+                    ctx.fillText(text, x, 100);
+                    x += ctx.measureText(text).width;
+
+                    ctx.font = "30px 궁서";
+                    ctx.fillStyle = "green";
+                    text = "중간글자";
+                    ctx.fillText(text, x, 100);
+                    x += ctx.measureText(text).width;
+
+                    ctx.font = "15px 궁서";
+                    ctx.fillStyle = "red";
+                    text = "작은글자";
+                    ctx.fillText(text, x, 100);
+                }
+
+
+
                 </script>
         </div>
 

@@ -57,7 +57,9 @@
                     //draw_fillstyle2();
                     //draw_gradienttext();
                     //draw_textalign();
-                    draw_image();
+                    //draw_image();
+                    //draw_image4();
+                    draw_png();
                 }
                 function draw(){
                     // draw rect
@@ -162,6 +164,35 @@
                     img.src="bogu.jpg";
                     img.onload = function(){
                         ctx.drawImage(img, 50, 0, 150, 100);
+                    }
+                }
+
+                function draw_image3(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img,50,0,150,200);
+                    }
+                }
+
+                function draw_image4(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img,250,100,50,100,150,0,100,200);
+                    }
+                }
+
+                function draw_png(){
+                    var img = new Image();
+                    for(x = 0; x<400; x += 20){
+                        for(y=0; y<200; y+=20){
+                            ctx.strokeRect(x,y,15,15);
+                        }
+                    }
+
+                    img.onload = function(){
+                        ctx.drawImage(img,0,0);
                     }
                 }
 

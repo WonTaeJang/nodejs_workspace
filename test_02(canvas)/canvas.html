@@ -59,7 +59,8 @@
                     //draw_textalign();
                     //draw_image();
                     //draw_image4();
-                    draw_png();
+                    //draw_png();
+                    draw_alpha();
                 }
                 function draw(){
                     // draw rect
@@ -193,6 +194,19 @@
 
                     img.onload = function(){
                         ctx.drawImage(img,0,0);
+                    }
+                }
+
+                function draw_alpha(){
+                    ctx.fillStyle = "yellow";
+                    ctx.fillRect(0,0,canvas.width, canvas.height);
+
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img, 50, 50);
+                        ctx.globalAlpha = 0.5;
+                        ctx.drawImage(img, 200, 50);
                     }
                 }
 

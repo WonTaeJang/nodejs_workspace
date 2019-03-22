@@ -61,7 +61,8 @@
                     //draw_image4();
                     //draw_png();
                     //draw_alpha();
-                    draw_imageshadow();
+                    //draw_imageshadow();
+                    draw_imagecomposite();
                 }
                 function draw(){
                     // draw rect
@@ -220,6 +221,17 @@
                         ctx.shadowOffsetY=8;
                         ctx.shadowBlur = 12;
                         ctx.drawImage(img,50,50);
+                    }
+                }
+
+                function draw_imagecomposite(){
+                    var img = new Image();
+                    img.src="bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img, 50,0);
+                        ctx.globalCompositeOperation = "destination-in";
+                        ctx.font = "bold 100px 궁서";
+                        ctx.fillText("머라카노", 50, 120);
                     }
                 }
 

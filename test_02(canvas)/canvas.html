@@ -62,7 +62,8 @@
                     //draw_png();
                     //draw_alpha();
                     //draw_imageshadow();
-                    draw_imagecomposite();
+                    //draw_imagecomposite();
+                    draw_imageload();
                 }
                 function draw(){
                     // draw rect
@@ -235,7 +236,25 @@
                     }
                 }
 
+                // 2개의 이미지 읽어서 출력
+                function draw_imageload(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img, 50, 0);
 
+                        var img2 = new Image();
+                        img2.src = "rose.png";
+                        img2.onload= function(){
+                            ctx.drawImage(img2,100,0);
+                        }
+                    }
+                }
+
+                // 이미지 로드 완료를 대기하는 방법
+                // function draw_imageload(){
+                //     var img = 
+                // }
 
                 </script>
         </div>

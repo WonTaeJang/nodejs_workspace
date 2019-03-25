@@ -17,10 +17,32 @@
             <script>
                 var canvas;
                 var ctx;
+                var loadcount = 0;
+                var img = new Array(2);
+
                 window.onload = function(){
                     canvas = document.getElementById("canvas");
                     if(canvas == null || canvas.getContext == null) return;
                     ctx = canvas.getContext("2d");
+
+                    img[0] = new Image();
+                    img[0].src = "bogu.jpg";
+                    img[0].onload = function(){
+                        loadcount++;
+                    }
+                    img[1] = new Image();
+                    img[1].src = "rose.png";
+                    img[1].onload = function(){
+                        loadcount++;
+                    }
+
+                    var timer = setInterval(function(){
+                        if(loadcount == 2){
+                            clearInterval(timer);
+                            draw_imageload2();
+                        }
+                    },100);
+
                     //draw();
                     //draw_closePath(2);
                     //draw_pathrect();
@@ -63,7 +85,7 @@
                     //draw_alpha();
                     //draw_imageshadow();
                     //draw_imagecomposite();
-                    draw_imageload();
+                    //draw_imageload();
                 }
                 function draw(){
                     // draw rect
@@ -252,9 +274,15 @@
                 }
 
                 // 이미지 로드 완료를 대기하는 방법
-                // function draw_imageload(){
-                //     var img = 
-                // }
+                function draw_imageload2(){
+                    if(loadcount != 2){
+                        ctx.font = "30px arial";
+                        ctx.fillText("로딩중...",100,100);
+                    } else{
+                        ctx.drawImage(img[0],50,0);
+                        ctx.drawImage(img[1],100,0);
+                    }
+                }
 
                 </script>
         </div>

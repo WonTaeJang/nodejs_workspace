@@ -9,10 +9,13 @@
     </head>
     <body>
         <!-- http://www.soen.kr/html5/canvas/canvas.html -->
-        <div>
            
             <p> 캔버스에 직접 그린다 </p>
             <canvas id="canvas" width="500" height="500"></canvas>
+
+            <div style="display:none"> 
+                <img id="bogu" src="bogu.jpg">
+            </div>
 
             <script>
                 var canvas;
@@ -24,24 +27,6 @@
                     canvas = document.getElementById("canvas");
                     if(canvas == null || canvas.getContext == null) return;
                     ctx = canvas.getContext("2d");
-
-                    img[0] = new Image();
-                    img[0].src = "bogu.jpg";
-                    img[0].onload = function(){
-                        loadcount++;
-                    }
-                    img[1] = new Image();
-                    img[1].src = "rose.png";
-                    img[1].onload = function(){
-                        loadcount++;
-                    }
-
-                    var timer = setInterval(function(){
-                        if(loadcount == 2){
-                            clearInterval(timer);
-                            draw_imageload2();
-                        }
-                    },100);
 
                     //draw();
                     //draw_closePath(2);
@@ -86,6 +71,7 @@
                     //draw_imageshadow();
                     //draw_imagecomposite();
                     //draw_imageload();
+                    draw_imageload3();
                 }
                 function draw(){
                     // draw rect
@@ -284,8 +270,14 @@
                     }
                 }
 
+                // 이미지를 숨겨놓고 읽어와 사용하기
+                function draw_imageload3(){
+                    var img = document.getElementById("bogu");
+                    ctx.drawImage(img,50,0);
+                }
+
                 </script>
-        </div>
+
 
         
     </body>

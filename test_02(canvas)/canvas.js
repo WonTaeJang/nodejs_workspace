@@ -424,3 +424,190 @@ function draw_fillstyle2(){
    ctx.strokeStyle = "red";
    ctx.strokeText("폰트Fo38", 10, 120);
 }
+
+                // 무지개색 폰트
+                function draw_gradienttext(){
+                    ctx.font = "bold 80px 궁서"
+                    var brush = ctx.createLinearGradient(0,0,canvas.width, canvas.height);
+                    brush.addColorStop(0, "red");
+                    brush.addColorStop(0.3, "yellow");
+                    brush.addColorStop(0.5, "green");
+                    brush.addColorStop(0.7, "blue");
+                    brush.addColorStop(1, "violet");
+                    ctx.fillStyle = brush;
+                    
+                    ctx.fillText("폰트Fo38", 10,120);
+                    
+                    ctx.lineWidth = 2;
+                    ctx.strokeText("폰트Fo38",10,120);
+                }
+                // 문자열 수평 정렬
+                function draw_textalign(){
+                    ctx.font="20pt arial";
+                    ctx.fillStyle = "blue";
+                    ctx.fillRect(200,0,2,200);
+                    ctx.fillStyle = "black";
+                    ctx.fillText("왼쪽",200,20);
+                    ctx.textAlign = "center";
+                    ctx.fillText("중앙", 200, 70);
+                    ctx.textAlign = "right";
+                    ctx.fillText("오른쪽", 200, 110);
+
+
+                }
+
+                // 
+                function draw_textbaseline(){
+                    ctx.font = "20pt arial";
+                    ctx.filllStyle = "blue";
+                    ctx.fillRect(0,50,400,2);
+                    ctx.fillRect(0,150,400,2);
+                    ctx.filllStyle = "black";
+
+                    ctx.textBaseline = "top";
+                    ctx.fillText("top", 0, 50);
+                    ctx.textBaseline="middle"
+                    ctx.fillText("middle", 120, 50);
+                    ctx.textBaseline = "bottom"
+                    ctx.fillText("bottom", 250, 50);
+
+                    ctx.textBaseline = "hanging"
+                    ctx.fillText("hanging", 0, 150);
+                    ctx.textBaseline = "alphabetic"
+                    ctx.fillText("alphabetic", 120, 150);
+                    ctx.textBaseline = "ideographic"
+                    ctx.fillText("ideographic", 250, 150);
+                }
+
+                function draw_centertext() {
+                    ctx.font = "60px 궁서";
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.fillText("정중앙", canvas.width / 2, canvas.height / 2);
+                }
+
+                function draw_measuretext(){
+                    var x = 10;
+                    var text = "큰글자";
+
+                    ctx.font = "50px 궁서";
+                    ctx.fillStyle = "blue";
+                    ctx.fillText(text, x, 100);
+                    x += ctx.measureText(text).width;
+
+                    ctx.font = "30px 궁서";
+                    ctx.fillStyle = "green";
+                    text = "중간글자";
+                    ctx.fillText(text, x, 100);
+                    x += ctx.measureText(text).width;
+
+                    ctx.font = "15px 궁서";
+                    ctx.fillStyle = "red";
+                    text = "작은글자";
+                    ctx.fillText(text, x, 100);
+                }
+
+                function draw_image(){
+                    var img = new Image();
+                    img.src="bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img, 50, 0, 150, 100);
+                    }
+                }
+
+                function draw_image3(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img,50,0,150,200);
+                    }
+                }
+
+                function draw_image4(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img,250,100,50,100,150,0,100,200);
+                    }
+                }
+
+                function draw_png(){
+                    var img = new Image();
+                    for(x = 0; x<400; x += 20){
+                        for(y=0; y<200; y+=20){
+                            ctx.strokeRect(x,y,15,15);
+                        }
+                    }
+
+                    img.onload = function(){
+                        ctx.drawImage(img,0,0);
+                    }
+                }
+
+                function draw_alpha(){
+                    ctx.fillStyle = "yellow";
+                    ctx.fillRect(0,0,canvas.width, canvas.height);
+
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img, 50, 50);
+                        ctx.globalAlpha = 0.5;
+                        ctx.drawImage(img, 200, 50);
+                    }
+                }
+
+                function draw_imageshadow(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.shadowColor="blue";
+                        ctx.shadowOffsetX=8;
+                        ctx.shadowOffsetY=8;
+                        ctx.shadowBlur = 12;
+                        ctx.drawImage(img,50,50);
+                    }
+                }
+
+                function draw_imagecomposite(){
+                    var img = new Image();
+                    img.src="bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img, 50,0);
+                        ctx.globalCompositeOperation = "destination-in";
+                        ctx.font = "bold 100px 궁서";
+                        ctx.fillText("머라카노", 50, 120);
+                    }
+                }
+
+                // 2개의 이미지 읽어서 출력
+                function draw_imageload(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img, 50, 0);
+
+                        var img2 = new Image();
+                        img2.src = "rose.png";
+                        img2.onload= function(){
+                            ctx.drawImage(img2,100,0);
+                        }
+                    }
+                }
+
+                // 이미지 로드 완료를 대기하는 방법
+                function draw_imageload2(){
+                    if(loadcount != 2){
+                        ctx.font = "30px arial";
+                        ctx.fillText("로딩중...",100,100);
+                    } else{
+                        ctx.drawImage(img[0],50,0);
+                        ctx.drawImage(img[1],100,0);
+                    }
+                }
+
+                // 이미지를 숨겨놓고 읽어와 사용하기
+                function draw_imageload3(){
+                    var img = document.getElementById("bogu");
+                    ctx.drawImage(img,50,0);
+                }

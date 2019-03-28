@@ -14,9 +14,9 @@
             <canvas id="canvas" width="500" height="500">
                 이 브라우저는 캔버스를 지원하지 않습니다.
             </canvas>
-            <canvas id="canvas2" width="500" height="500">
+            <!-- <canvas id="canvas2" width="500" height="500">
                 이 브라우저는 캔버스를 지원하지 않습니다.
-            </canvas>
+            </canvas> -->
 
             <script>
                 var canvas;
@@ -71,7 +71,10 @@
                     //draw_imagecomposite();
                     //draw_imageload();
                     //draw_imageload3();
-                    draw_offcanvas();
+                    //draw_offcanvas();
+                    //draw_offcanvas2();
+                    //draw_offcanvas3();
+                    draw_imagepattern();
                 }
                 function draw(){
                     // draw rect
@@ -105,6 +108,41 @@
                     var ctx2 = canvas2.getContext("2d");
                     
                     ctx2.drawImage(canvas, 0,0,canvas2.width/2, canvas2.height/2);
+                }
+
+                // 캔버스에서 미리 그린 후 전송하기
+                function draw_offcanvas2(){
+                    var offcanvas = document.createElement("canvas");
+                    offcanvas.width = canvas.width;
+                    offcanvas.height = canvas.height;
+                    var offctx = offcanvas.getContext("2d");
+                    for(var i = 0; i < 100; i+=5){
+                        offctx.beginPath();
+                        offctx.arc(200,100,i,0,2*Math.PI);
+                        offctx.stroke();
+                    }
+
+                    ctx.drawImage(offcanvas,0,0,offcanvas.width,offcanvas.height);
+                }
+
+                // 같은 캔버스에서 이미지 복사하기
+                function draw_offcanvas3(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img,50,0);
+                        ctx.drawImage(canvas, 300,100,50,100,0,0,50,100);
+                    }
+                }
+
+                // 이미지 패턴
+                function draw_imagepattern(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.fillStyle = ctx.createPattern(img, "repeat");
+                        ctx.fillRect(10,10,450,180);
+                    }
                 }
 
                 </script>

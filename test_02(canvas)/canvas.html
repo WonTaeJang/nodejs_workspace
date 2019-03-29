@@ -74,7 +74,10 @@
                     //draw_offcanvas();
                     //draw_offcanvas2();
                     //draw_offcanvas3();
-                    draw_imagepattern();
+                    //draw_imagepattern();
+                    //draw_imagepattern2();
+                    //draw_imagepattern3();
+                    draw_imagepattern4();
                 }
                 function draw(){
                     // draw rect
@@ -143,6 +146,49 @@
                         ctx.fillStyle = ctx.createPattern(img, "repeat");
                         ctx.fillRect(10,10,450,180);
                     }
+                }
+
+                // 글자의 획에 이미지 패턴 적용
+                function draw_imagepattern2(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.fillStyle = ctx.createPattern(img, "repeat");
+                        ctx.font = "bold 180px 궁서";
+
+                        ctx.fillText("구름", 10, 170);
+                    }
+                }
+
+                // 글자의 외곽선에 이미지 패턴 적용
+                function draw_imagepattern3(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.strokeStyle = ctx.createPattern(img, "repeat");
+
+                        ctx.font = "bold 180px 궁서";
+                        ctx.lineWidth = 10;
+                        ctx.strokeText("구름", 10,170);
+                    }
+                }
+
+                // 그래디언트 패턴 만들어서 반복
+                function draw_imagepattern4(){
+                    var offcanvas = document.createElement("canvas");
+                    offcanvas.width = 100;
+                    offcanvas.height = 100;
+                    var offctx = offcanvas.getContext("2d");
+
+                    var brush = offctx.createLinearGradient(0,0,100,100);
+                    brush.addColorStop(0,"red");
+                    brush.addColorStop(0.5,"yellow");
+                    brush.addColorStop(1,"blue");
+                    offctx.fillStyle = brush;
+                    offctx.fillRect(0,0,100,100);
+
+                    ctx.fillStyle = ctx.createPattern(offcanvas, "repeat");
+                    ctx.fillRect(10,10,380,180);
                 }
 
                 </script>

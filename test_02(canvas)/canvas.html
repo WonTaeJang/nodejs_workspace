@@ -77,7 +77,8 @@
                     //draw_imagepattern();
                     //draw_imagepattern2();
                     //draw_imagepattern3();
-                    draw_imagepattern4();
+                    //draw_imagepattern4();
+                    draw_revert();
                 }
                 function draw(){
                     // draw rect
@@ -190,6 +191,38 @@
                     ctx.fillStyle = ctx.createPattern(offcanvas, "repeat");
                     ctx.fillRect(10,10,380,180);
                 }
+
+                function draw_revert() {
+                        //     var img = new Image();
+                        //     img.src = "bogu.jpg";
+                        //     img.onload = function(){
+                        //         ctx.drawImage(img,0,0);
+
+                        //         var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                        //         var raster = imgData.data;
+                        //         for(var i = 0; i < raster.length; i++){
+                        //             if(i%4 != 3){
+                        //                 raster[i] = 255 - raster[i];
+                        //             }
+                        //         }
+                        //         ctx.putImageData(imgData,0,0);
+                        //     }
+                        // }
+                        var img = new Image();
+                        img.src = "bogu.jpg"
+                        img.onload = function () {
+                            ctx.drawImage(img, 0, 0);
+
+                            var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            var raster = imgData.data;
+                            for (var i = 0; i < raster.length; i++) {
+                                if (i % 4 != 3) {
+                                    raster[i] = 255 - raster[i];
+                                }
+                            }
+                            ctx.putImageData(imgData, 0, 0);
+                        }
+                    }
 
                 </script>
 

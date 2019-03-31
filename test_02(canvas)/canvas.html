@@ -27,7 +27,7 @@
                     if(canvas == null || canvas.getContext == null) return;
                     ctx = canvas.getContext("2d");
 
-                    //draw();
+                    draw();
                     //draw_closePath(2);
                     //draw_pathrect();
                     //draw_circle();
@@ -78,7 +78,7 @@
                     //draw_imagepattern2();
                     //draw_imagepattern3();
                     //draw_imagepattern4();
-                    draw_revert();
+                    //draw_revert();
                 }
                 function draw(){
                     // draw rect
@@ -223,6 +223,26 @@
                             ctx.putImageData(imgData, 0, 0);
                         }
                     }
+
+                        function draw() {
+                            var img = new Image();
+                            img.src = "cosmos.jpg";  
+                            img.crossorigin="Anonymous";
+                            img.onload = function () {
+                                const ctx = canvas.getContext('2d');
+                                ctx.drawImage(img, 0, 0);
+
+                                
+                                var imgData = ctx.getImageData(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+                                var raster = imgData.data;
+                                for (var i = 0; i < raster.length; i++) {
+                                    if (i % 4 != 3) {
+                                        raster[i] = 255 - raster[i];
+                                    }
+                                }
+                                ctx.putImageData(imgData, 0, 0);  
+                            }
+                        }
 
                 </script>
 

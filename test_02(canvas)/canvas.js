@@ -611,3 +611,99 @@ function draw_fillstyle2(){
                     var img = document.getElementById("bogu");
                     ctx.drawImage(img,50,0);
                 }
+
+                
+                // 캔버스끼리 이미지 복사하기
+                function draw_offcanvas(){
+                    ctx.beginPath();
+                    ctx.arc(200,100,100,0,2*Math.PI, true);
+                    var brush = ctx.createRadialGradient(200,100,20,200,100,100);
+                    brush.addColorStop(0, "yellow");
+                    brush.addColorStop(1, "red");
+                    ctx.fillStyle = brush;
+                    ctx.fill();
+
+                    var canvas2 = document.getElementById("canvas2");
+                    
+                    var ctx2 = canvas2.getContext("2d");
+                    
+                    ctx2.drawImage(canvas, 0,0,canvas2.width/2, canvas2.height/2);
+                }
+
+                // 캔버스에서 미리 그린 후 전송하기
+                function draw_offcanvas2(){
+                    var offcanvas = document.createElement("canvas");
+                    offcanvas.width = canvas.width;
+                    offcanvas.height = canvas.height;
+                    var offctx = offcanvas.getContext("2d");
+                    for(var i = 0; i < 100; i+=5){
+                        offctx.beginPath();
+                        offctx.arc(200,100,i,0,2*Math.PI);
+                        offctx.stroke();
+                    }
+
+                    ctx.drawImage(offcanvas,0,0,offcanvas.width,offcanvas.height);
+                }
+
+                // 같은 캔버스에서 이미지 복사하기
+                function draw_offcanvas3(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img,50,0);
+                        ctx.drawImage(canvas, 300,100,50,100,0,0,50,100);
+                    }
+                }
+
+                // 이미지 패턴
+                function draw_imagepattern(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.fillStyle = ctx.createPattern(img, "repeat");
+                        ctx.fillRect(10,10,450,180);
+                    }
+                }
+
+                // 글자의 획에 이미지 패턴 적용
+                function draw_imagepattern2(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.fillStyle = ctx.createPattern(img, "repeat");
+                        ctx.font = "bold 180px 궁서";
+
+                        ctx.fillText("구름", 10, 170);
+                    }
+                }
+
+                // 글자의 외곽선에 이미지 패턴 적용
+                function draw_imagepattern3(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.strokeStyle = ctx.createPattern(img, "repeat");
+
+                        ctx.font = "bold 180px 궁서";
+                        ctx.lineWidth = 10;
+                        ctx.strokeText("구름", 10,170);
+                    }
+                }
+
+                // 그래디언트 패턴 만들어서 반복
+                function draw_imagepattern4(){
+                    var offcanvas = document.createElement("canvas");
+                    offcanvas.width = 100;
+                    offcanvas.height = 100;
+                    var offctx = offcanvas.getContext("2d");
+
+                    var brush = offctx.createLinearGradient(0,0,100,100);
+                    brush.addColorStop(0,"red");
+                    brush.addColorStop(0.5,"yellow");
+                    brush.addColorStop(1,"blue");
+                    offctx.fillStyle = brush;
+                    offctx.fillRect(0,0,100,100);
+
+                    ctx.fillStyle = ctx.createPattern(offcanvas, "repeat");
+                    ctx.fillRect(10,10,380,180);
+                }

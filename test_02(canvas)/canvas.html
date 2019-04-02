@@ -5,19 +5,23 @@
         <style type="text/css">
             canvas{border: 3px solid magenta};
         </style>
+
+
+
         <script type = "text/javascript" src = "..\test_02(canvas)\canvas.js"></script>
     </head>
     <body>
         <!-- http://www.soen.kr/html5/canvas/canvas.html -->
            
             <p> 캔버스에 직접 그린다 </p>
-            <canvas id="canvas" width="500" height="500">
+            <canvas id="canvas" width="400" height="200">
                 이 브라우저는 캔버스를 지원하지 않습니다.
             </canvas>
             <!-- <canvas id="canvas2" width="500" height="500">
                 이 브라우저는 캔버스를 지원하지 않습니다.
             </canvas> -->
 
+            <img id = "image"/>
             <script>
                 var canvas;
                 var ctx;
@@ -27,7 +31,7 @@
                     if(canvas == null || canvas.getContext == null) return;
                     ctx = canvas.getContext("2d");
 
-                    draw();
+                    //draw();
                     //draw_closePath(2);
                     //draw_pathrect();
                     //draw_circle();
@@ -79,6 +83,8 @@
                     //draw_imagepattern3();
                     //draw_imagepattern4();
                     //draw_revert();
+                    //draw_dataurl();
+                    draw_clipping();
                 }
                 function draw(){
                     // draw rect
@@ -97,51 +103,46 @@
                     // ctx.fillRoundRect(150,10,120,100,30);
                 }
 
-                function draw_revert() {
-                        //     var img = new Image();
-                        //     img.src = "bogu.jpg";
-                        //     img.onload = function(){
-                        //         ctx.drawImage(img,0,0);
 
-                        //         var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                        //         var raster = imgData.data;
-                        //         for(var i = 0; i < raster.length; i++){
-                        //             if(i%4 != 3){
-                        //                 raster[i] = 255 - raster[i];
-                        //             }
-                        //         }
-                        //         ctx.putImageData(imgData,0,0);
-                        //     }
-                        // }
-                        var img = new Image();
-                        img.src = "bogu.jpg"
-                        img.onload = function () {
-                            ctx.drawImage(img, 0, 0);
+                function draw_dot() {
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.crossorigin = "Anonymous";
+                    img.onload = function () {
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
 
-                            var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                            var raster = imgData.data;
-                            for (var i = 0; i < raster.length; i++) {
-                                if (i % 4 != 3) {
-                                    raster[i] = 255 - raster[i];
-                                }
-                            }
-                            ctx.putImageData(imgData, 0, 0);
-                        }
-                    }
 
-                    function draw() {
-                        var imgData = ctx.createImageData(canvas.width, canvas.height);
+                        var imgData = ctx.getImageData(0, 0, canvas.offsetWidth, canvas.offsetHeight);
                         var raster = imgData.data;
-                        for (var i = 0; i < 10000; i++) {
-                            var p = Math.floor(Math.random() * raster.length / 4) * 4;
-                            raster[p] = Math.floor(Math.random() * 256);
-                            raster[p + 1] = Math.floor(Math.random() * 256);
-                            raster[p + 2] = Math.floor(Math.random() * 256);
-                            raster[p + 3] = 255;
+                        for (var i = 0; i < raster.length; i++) {
+                            if (i % 4 != 3) {
+                                raster[i] = 255 - raster[i];
+                            }
                         }
                         ctx.putImageData(imgData, 0, 0);
-		            }
+                    }
+                }
 
+                function draw_dataurl(){
+                    ctx.fillRect(2,2,5,5);
+                    var data = canvas.toDataURL();
+                    alert(data);
+
+                    var image = document.getElementById("image");
+                    image.src = data;
+                }
+
+                function draw_clipping(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.beginPath();
+                        ctx.arc(200,100,100,0,2*Math.PI,true);
+                        ctx.clip();
+                        ctx.drawImage(img, 50, 0);
+                    }
+                }
 
                 </script>
 

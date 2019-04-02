@@ -278,432 +278,336 @@ function draw_radialgradient3() {
 }
 
 // 선의 굵기
-function draw_linewidth(){
-    ctx.strokeRect(10,10,90,90);
-    ctx.lineWidth=5;
-    ctx.strokeRect(110,10,90,90);
-    ctx.lineWidth=10;
-    ctx.strokeRect(210,10,90,90);
+function draw_linewidth() {
+    ctx.strokeRect(10, 10, 90, 90);
+    ctx.lineWidth = 5;
+    ctx.strokeRect(110, 10, 90, 90);
+    ctx.lineWidth = 10;
+    ctx.strokeRect(210, 10, 90, 90);
 }
 
 // 선 끝부분의 모양
-function draw_linecap(){
+function draw_linecap() {
     ctx.lineWidth = 20;
-    ctx.lineCap="butt";
+    ctx.lineCap = "butt";
     ctx.beginPath();
-    ctx.moveTo(20,20);
-    ctx.lineTo(200,20);
+    ctx.moveTo(20, 20);
+    ctx.lineTo(200, 20);
     ctx.stroke();
 
-    ctx.lineCap="round";
+    ctx.lineCap = "round";
     ctx.beginPath();
-    ctx.moveTo(20,70);
-    ctx.lineTo(200,70);
+    ctx.moveTo(20, 70);
+    ctx.lineTo(200, 70);
     ctx.stroke();
 
-    ctx.lineCap="square";
+    ctx.lineCap = "square";
     ctx.beginPath();
-    ctx.moveTo(20,120);
-    ctx.lineTo(200,120);
+    ctx.moveTo(20, 120);
+    ctx.lineTo(200, 120);
     ctx.stroke();
 }
 
 // 선이 만나는 부분의 모양
-function linejoin(){
+function linejoin() {
     ctx.lineWidth = 20;
     ctx.lineJoin = "bevel";
-    ctx.strokeRect(20,20,60,60);
+    ctx.strokeRect(20, 20, 60, 60);
     ctx.lineJoin = "round";
-    ctx.strokeRect(120,20,60,60);
+    ctx.strokeRect(120, 20, 60, 60);
     ctx.lineJoin = "miter";
-    ctx.strokeRect(220,20,60,60);
+    ctx.strokeRect(220, 20, 60, 60);
 }
 
 // 그림자
-function draw_shadow(){
-   ctx.shadowColor="gray";
-   ctx.shadowOffsetX=10;
-   ctx.shadowOffsetY=10;
-   ctx.fillRect(10,10,100,100);
+function draw_shadow() {
+    ctx.shadowColor = "gray";
+    ctx.shadowOffsetX = 10;
+    ctx.shadowOffsetY = 10;
+    ctx.fillRect(10, 10, 100, 100);
 }
 
 // 흐릿한 그림자
-function draw_shadow2(){
-   ctx.shadowColor="gray";
-   ctx.shadowOffsetX=10;
-   ctx.shadowOffsetY=10;
-   ctx.shadowBlur = 10; // 흐릿하게
-   ctx.fillRect(10,10,100,100);
+function draw_shadow2() {
+    ctx.shadowColor = "gray";
+    ctx.shadowOffsetX = 10;
+    ctx.shadowOffsetY = 10;
+    ctx.shadowBlur = 10; // 흐릿하게
+    ctx.fillRect(10, 10, 100, 100);
 }
 
 
 // 조합
-function composite(){
-   ctx.fillStyle = "blue";
-   ctx.fillRect(150,50,100,100);
+function composite() {
+    ctx.fillStyle = "blue";
+    ctx.fillRect(150, 50, 100, 100);
 
-   ctx.fillStyle="red";
-   ctx.globalCompositeOperation = "source-over"; ctx.fillRect(120,20,60,60);
-   ctx.globalCompositeOperation = "destination-over"; ctx.fillRect(220,20,60,60);
-   ctx.globalCompositeOperation = "xor"; ctx.fillRect(120,120,60,60);
-   ctx.globalCompositeOperation = "lighter"; ctx.fillRect(220,120,60,60);
+    ctx.fillStyle = "red";
+    ctx.globalCompositeOperation = "source-over"; ctx.fillRect(120, 20, 60, 60);
+    ctx.globalCompositeOperation = "destination-over"; ctx.fillRect(220, 20, 60, 60);
+    ctx.globalCompositeOperation = "xor"; ctx.fillRect(120, 120, 60, 60);
+    ctx.globalCompositeOperation = "lighter"; ctx.fillRect(220, 120, 60, 60);
 }
 
 // 속성의 저장 및 복구
-function savererstore(){
-   ctx.strokeStyle="red";
-   ctx.lineWidth = 8;
-   ctx.strokeRect(10,10,60,60);
-   ctx.save();
+function savererstore() {
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 8;
+    ctx.strokeRect(10, 10, 60, 60);
+    ctx.save();
 
-   ctx.strokeStyle="blue";
-   ctx.lineWidth=2;
-   ctx.strokeRect(110,10,60,60);
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(110, 10, 60, 60);
 
-   ctx.restore();
-   ctx.strokeRect(210,10,60,60);
+    ctx.restore();
+    ctx.strokeRect(210, 10, 60, 60);
 }
 
 // 여러 단계 저장
-function savererstore2(){
-   ctx.fillStyle = "red";
-   ctx.fillRect(10,10,50,50);
-   ctx.save();
+function savererstore2() {
+    ctx.fillStyle = "red";
+    ctx.fillRect(10, 10, 50, 50);
+    ctx.save();
 
-   ctx.fillStyle = "blue";
-   ctx.fillRect(70,10,50,50);
-   ctx.save();
+    ctx.fillStyle = "blue";
+    ctx.fillRect(70, 10, 50, 50);
+    ctx.save();
 
-   ctx.fillStyle = "green";
-   ctx.fillRect(130,10,50,50);
+    ctx.fillStyle = "green";
+    ctx.fillRect(130, 10, 50, 50);
 
-   ctx.restore();
-   ctx.fillRect(190,10,50,50);
+    ctx.restore();
+    ctx.fillRect(190, 10, 50, 50);
 
-   ctx.restore();
-   ctx.fillRect(250,10,50,50);
+    ctx.restore();
+    ctx.fillRect(250, 10, 50, 50);
 
 }
 
 // 텍스트 출력
-function draw_filltext(){
-    ctx.font="bold 50px 궁서";
+function draw_filltext() {
+    ctx.font = "bold 50px 궁서";
     ctx.fillText("대한민국", 10, 60);
     ctx.strokeText("대한민국", 10, 120);
 }
 
-function draw_filltext2(){
-   ctx.font="bold 50px 궁서";
-   ctx.fillText("대한민국", 10, 60, 100);
-   ctx.fillText("대한민국", 10, 120, 200);
+function draw_filltext2() {
+    ctx.font = "bold 50px 궁서";
+    ctx.fillText("대한민국", 10, 60, 100);
+    ctx.fillText("대한민국", 10, 120, 200);
 }
 
-function draw_fillstyle(){
-   ctx.font = "bold 80px 궁서";
+function draw_fillstyle() {
+    ctx.font = "bold 80px 궁서";
 
-   ctx.fillStyle = "orange";
-   ctx.fillText("폰트Fo38", 10, 120);
-   
-   ctx.lineWidth = 3;
-   ctx.strokeStyle = "red";
-   ctx.strokeText("폰트Fo38", 10, 120);
+    ctx.fillStyle = "orange";
+    ctx.fillText("폰트Fo38", 10, 120);
+
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "red";
+    ctx.strokeText("폰트Fo38", 10, 120);
 }
 
-function draw_fillstyle2(){
-   ctx.font = "bold 80px 궁서";
+function draw_fillstyle2() {
+    ctx.font = "bold 80px 궁서";
 
-   ctx.shadowColor = "gray";
-   ctx.shadowOffsetX = 6;
-   ctx.shadowOffsetY = 6;
-   ctx.shadowBlur = 12;
+    ctx.shadowColor = "gray";
+    ctx.shadowOffsetX = 6;
+    ctx.shadowOffsetY = 6;
+    ctx.shadowBlur = 12;
 
-   ctx.fillStyle = "orange";
-   ctx.fillText("폰트Fo38", 10, 120);
-   
-   ctx.lineWidth = 3;
-   ctx.strokeStyle = "red";
-   ctx.strokeText("폰트Fo38", 10, 120);
+    ctx.fillStyle = "orange";
+    ctx.fillText("폰트Fo38", 10, 120);
+
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "red";
+    ctx.strokeText("폰트Fo38", 10, 120);
 }
 
-                // 무지개색 폰트
-                function draw_gradienttext(){
-                    ctx.font = "bold 80px 궁서"
-                    var brush = ctx.createLinearGradient(0,0,canvas.width, canvas.height);
-                    brush.addColorStop(0, "red");
-                    brush.addColorStop(0.3, "yellow");
-                    brush.addColorStop(0.5, "green");
-                    brush.addColorStop(0.7, "blue");
-                    brush.addColorStop(1, "violet");
-                    ctx.fillStyle = brush;
-                    
-                    ctx.fillText("폰트Fo38", 10,120);
-                    
-                    ctx.lineWidth = 2;
-                    ctx.strokeText("폰트Fo38",10,120);
-                }
-                // 문자열 수평 정렬
-                function draw_textalign(){
-                    ctx.font="20pt arial";
-                    ctx.fillStyle = "blue";
-                    ctx.fillRect(200,0,2,200);
-                    ctx.fillStyle = "black";
-                    ctx.fillText("왼쪽",200,20);
-                    ctx.textAlign = "center";
-                    ctx.fillText("중앙", 200, 70);
-                    ctx.textAlign = "right";
-                    ctx.fillText("오른쪽", 200, 110);
+// 무지개색 폰트
+function draw_gradienttext() {
+    ctx.font = "bold 80px 궁서"
+    var brush = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    brush.addColorStop(0, "red");
+    brush.addColorStop(0.3, "yellow");
+    brush.addColorStop(0.5, "green");
+    brush.addColorStop(0.7, "blue");
+    brush.addColorStop(1, "violet");
+    ctx.fillStyle = brush;
+
+    ctx.fillText("폰트Fo38", 10, 120);
+
+    ctx.lineWidth = 2;
+    ctx.strokeText("폰트Fo38", 10, 120);
+}
+// 문자열 수평 정렬
+function draw_textalign() {
+    ctx.font = "20pt arial";
+    ctx.fillStyle = "blue";
+    ctx.fillRect(200, 0, 2, 200);
+    ctx.fillStyle = "black";
+    ctx.fillText("왼쪽", 200, 20);
+    ctx.textAlign = "center";
+    ctx.fillText("중앙", 200, 70);
+    ctx.textAlign = "right";
+    ctx.fillText("오른쪽", 200, 110);
 
 
-                }
+}
 
-                // 
-                function draw_textbaseline(){
-                    ctx.font = "20pt arial";
-                    ctx.filllStyle = "blue";
-                    ctx.fillRect(0,50,400,2);
-                    ctx.fillRect(0,150,400,2);
-                    ctx.filllStyle = "black";
+// 
+function draw_textbaseline() {
+    ctx.font = "20pt arial";
+    ctx.filllStyle = "blue";
+    ctx.fillRect(0, 50, 400, 2);
+    ctx.fillRect(0, 150, 400, 2);
+    ctx.filllStyle = "black";
 
-                    ctx.textBaseline = "top";
-                    ctx.fillText("top", 0, 50);
-                    ctx.textBaseline="middle"
-                    ctx.fillText("middle", 120, 50);
-                    ctx.textBaseline = "bottom"
-                    ctx.fillText("bottom", 250, 50);
+    ctx.textBaseline = "top";
+    ctx.fillText("top", 0, 50);
+    ctx.textBaseline = "middle"
+    ctx.fillText("middle", 120, 50);
+    ctx.textBaseline = "bottom"
+    ctx.fillText("bottom", 250, 50);
 
-                    ctx.textBaseline = "hanging"
-                    ctx.fillText("hanging", 0, 150);
-                    ctx.textBaseline = "alphabetic"
-                    ctx.fillText("alphabetic", 120, 150);
-                    ctx.textBaseline = "ideographic"
-                    ctx.fillText("ideographic", 250, 150);
-                }
+    ctx.textBaseline = "hanging"
+    ctx.fillText("hanging", 0, 150);
+    ctx.textBaseline = "alphabetic"
+    ctx.fillText("alphabetic", 120, 150);
+    ctx.textBaseline = "ideographic"
+    ctx.fillText("ideographic", 250, 150);
+}
 
-                function draw_centertext() {
-                    ctx.font = "60px 궁서";
-                    ctx.textAlign = "center";
-                    ctx.textBaseline = "middle";
-                    ctx.fillText("정중앙", canvas.width / 2, canvas.height / 2);
-                }
+function draw_centertext() {
+    ctx.font = "60px 궁서";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("정중앙", canvas.width / 2, canvas.height / 2);
+}
 
-                function draw_measuretext(){
-                    var x = 10;
-                    var text = "큰글자";
+function draw_measuretext() {
+    var x = 10;
+    var text = "큰글자";
 
-                    ctx.font = "50px 궁서";
-                    ctx.fillStyle = "blue";
-                    ctx.fillText(text, x, 100);
-                    x += ctx.measureText(text).width;
+    ctx.font = "50px 궁서";
+    ctx.fillStyle = "blue";
+    ctx.fillText(text, x, 100);
+    x += ctx.measureText(text).width;
 
-                    ctx.font = "30px 궁서";
-                    ctx.fillStyle = "green";
-                    text = "중간글자";
-                    ctx.fillText(text, x, 100);
-                    x += ctx.measureText(text).width;
+    ctx.font = "30px 궁서";
+    ctx.fillStyle = "green";
+    text = "중간글자";
+    ctx.fillText(text, x, 100);
+    x += ctx.measureText(text).width;
 
-                    ctx.font = "15px 궁서";
-                    ctx.fillStyle = "red";
-                    text = "작은글자";
-                    ctx.fillText(text, x, 100);
-                }
+    ctx.font = "15px 궁서";
+    ctx.fillStyle = "red";
+    text = "작은글자";
+    ctx.fillText(text, x, 100);
+}
 
-                function draw_image(){
-                    var img = new Image();
-                    img.src="bogu.jpg";
-                    img.onload = function(){
-                        ctx.drawImage(img, 50, 0, 150, 100);
-                    }
-                }
+function draw_image() {
+    var img = new Image();
+    img.src = "bogu.jpg";
+    img.onload = function () {
+        ctx.drawImage(img, 50, 0, 150, 100);
+    }
+}
 
-                function draw_image3(){
-                    var img = new Image();
-                    img.src = "bogu.jpg";
-                    img.onload = function(){
-                        ctx.drawImage(img,50,0,150,200);
-                    }
-                }
+function draw_image3() {
+    var img = new Image();
+    img.src = "bogu.jpg";
+    img.onload = function () {
+        ctx.drawImage(img, 50, 0, 150, 200);
+    }
+}
 
-                function draw_image4(){
-                    var img = new Image();
-                    img.src = "bogu.jpg";
-                    img.onload = function(){
-                        ctx.drawImage(img,250,100,50,100,150,0,100,200);
-                    }
-                }
+function draw_image4() {
+    var img = new Image();
+    img.src = "bogu.jpg";
+    img.onload = function () {
+        ctx.drawImage(img, 250, 100, 50, 100, 150, 0, 100, 200);
+    }
+}
 
-                function draw_png(){
-                    var img = new Image();
-                    for(x = 0; x<400; x += 20){
-                        for(y=0; y<200; y+=20){
-                            ctx.strokeRect(x,y,15,15);
-                        }
-                    }
+function draw_png() {
+    var img = new Image();
+    for (x = 0; x < 400; x += 20) {
+        for (y = 0; y < 200; y += 20) {
+            ctx.strokeRect(x, y, 15, 15);
+        }
+    }
 
-                    img.onload = function(){
-                        ctx.drawImage(img,0,0);
-                    }
-                }
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+    }
+}
 
-                function draw_alpha(){
-                    ctx.fillStyle = "yellow";
-                    ctx.fillRect(0,0,canvas.width, canvas.height);
+function draw_alpha() {
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                    var img = new Image();
-                    img.src = "cosmos.jpg";
-                    img.onload = function(){
-                        ctx.drawImage(img, 50, 50);
-                        ctx.globalAlpha = 0.5;
-                        ctx.drawImage(img, 200, 50);
-                    }
-                }
+    var img = new Image();
+    img.src = "cosmos.jpg";
+    img.onload = function () {
+        ctx.drawImage(img, 50, 50);
+        ctx.globalAlpha = 0.5;
+        ctx.drawImage(img, 200, 50);
+    }
+}
 
-                function draw_imageshadow(){
-                    var img = new Image();
-                    img.src = "cosmos.jpg";
-                    img.onload = function(){
-                        ctx.shadowColor="blue";
-                        ctx.shadowOffsetX=8;
-                        ctx.shadowOffsetY=8;
-                        ctx.shadowBlur = 12;
-                        ctx.drawImage(img,50,50);
-                    }
-                }
+function draw_imageshadow() {
+    var img = new Image();
+    img.src = "cosmos.jpg";
+    img.onload = function () {
+        ctx.shadowColor = "blue";
+        ctx.shadowOffsetX = 8;
+        ctx.shadowOffsetY = 8;
+        ctx.shadowBlur = 12;
+        ctx.drawImage(img, 50, 50);
+    }
+}
 
-                function draw_imagecomposite(){
-                    var img = new Image();
-                    img.src="bogu.jpg";
-                    img.onload = function(){
-                        ctx.drawImage(img, 50,0);
-                        ctx.globalCompositeOperation = "destination-in";
-                        ctx.font = "bold 100px 궁서";
-                        ctx.fillText("머라카노", 50, 120);
-                    }
-                }
+function draw_imagecomposite() {
+    var img = new Image();
+    img.src = "bogu.jpg";
+    img.onload = function () {
+        ctx.drawImage(img, 50, 0);
+        ctx.globalCompositeOperation = "destination-in";
+        ctx.font = "bold 100px 궁서";
+        ctx.fillText("머라카노", 50, 120);
+    }
+}
 
-                // 2개의 이미지 읽어서 출력
-                function draw_imageload(){
-                    var img = new Image();
-                    img.src = "bogu.jpg";
-                    img.onload = function(){
-                        ctx.drawImage(img, 50, 0);
+// 2개의 이미지 읽어서 출력
+function draw_imageload() {
+    var img = new Image();
+    img.src = "bogu.jpg";
+    img.onload = function () {
+        ctx.drawImage(img, 50, 0);
 
-                        var img2 = new Image();
-                        img2.src = "rose.png";
-                        img2.onload= function(){
-                            ctx.drawImage(img2,100,0);
-                        }
-                    }
-                }
+        var img2 = new Image();
+        img2.src = "rose.png";
+        img2.onload = function () {
+            ctx.drawImage(img2, 100, 0);
+        }
+    }
+}
 
-                // 이미지 로드 완료를 대기하는 방법
-                function draw_imageload2(){
-                    if(loadcount != 2){
-                        ctx.font = "30px arial";
-                        ctx.fillText("로딩중...",100,100);
-                    } else{
-                        ctx.drawImage(img[0],50,0);
-                        ctx.drawImage(img[1],100,0);
-                    }
-                }
+// 이미지 로드 완료를 대기하는 방법
+function draw_imageload2() {
+    if (loadcount != 2) {
+        ctx.font = "30px arial";
+        ctx.fillText("로딩중...", 100, 100);
+    } else {
+        ctx.drawImage(img[0], 50, 0);
+        ctx.drawImage(img[1], 100, 0);
+    }
+}
 
-                // 이미지를 숨겨놓고 읽어와 사용하기
-                function draw_imageload3(){
-                    var img = document.getElementById("bogu");
-                    ctx.drawImage(img,50,0);
-                }
-
-                
-                // 캔버스끼리 이미지 복사하기
-                function draw_offcanvas(){
-                    ctx.beginPath();
-                    ctx.arc(200,100,100,0,2*Math.PI, true);
-                    var brush = ctx.createRadialGradient(200,100,20,200,100,100);
-                    brush.addColorStop(0, "yellow");
-                    brush.addColorStop(1, "red");
-                    ctx.fillStyle = brush;
-                    ctx.fill();
-
-                    var canvas2 = document.getElementById("canvas2");
-                    
-                    var ctx2 = canvas2.getContext("2d");
-                    
-                    ctx2.drawImage(canvas, 0,0,canvas2.width/2, canvas2.height/2);
-                }
-
-                // 캔버스에서 미리 그린 후 전송하기
-                function draw_offcanvas2(){
-                    var offcanvas = document.createElement("canvas");
-                    offcanvas.width = canvas.width;
-                    offcanvas.height = canvas.height;
-                    var offctx = offcanvas.getContext("2d");
-                    for(var i = 0; i < 100; i+=5){
-                        offctx.beginPath();
-                        offctx.arc(200,100,i,0,2*Math.PI);
-                        offctx.stroke();
-                    }
-
-                    ctx.drawImage(offcanvas,0,0,offcanvas.width,offcanvas.height);
-                }
-
-                // 같은 캔버스에서 이미지 복사하기
-                function draw_offcanvas3(){
-                    var img = new Image();
-                    img.src = "bogu.jpg";
-                    img.onload = function(){
-                        ctx.drawImage(img,50,0);
-                        ctx.drawImage(canvas, 300,100,50,100,0,0,50,100);
-                    }
-                }
-
-                // 이미지 패턴
-                function draw_imagepattern(){
-                    var img = new Image();
-                    img.src = "cosmos.jpg";
-                    img.onload = function(){
-                        ctx.fillStyle = ctx.createPattern(img, "repeat");
-                        ctx.fillRect(10,10,450,180);
-                    }
-                }
-
-                // 글자의 획에 이미지 패턴 적용
-                function draw_imagepattern2(){
-                    var img = new Image();
-                    img.src = "cosmos.jpg";
-                    img.onload = function(){
-                        ctx.fillStyle = ctx.createPattern(img, "repeat");
-                        ctx.font = "bold 180px 궁서";
-
-                        ctx.fillText("구름", 10, 170);
-                    }
-                }
-
-                // 글자의 외곽선에 이미지 패턴 적용
-                function draw_imagepattern3(){
-                    var img = new Image();
-                    img.src = "cosmos.jpg";
-                    img.onload = function(){
-                        ctx.strokeStyle = ctx.createPattern(img, "repeat");
-
-                        ctx.font = "bold 180px 궁서";
-                        ctx.lineWidth = 10;
-                        ctx.strokeText("구름", 10,170);
-                    }
-                }
-
-                // 그래디언트 패턴 만들어서 반복
-                function draw_imagepattern4(){
-                    var offcanvas = document.createElement("canvas");
-                    offcanvas.width = 100;
-                    offcanvas.height = 100;
-                    var offctx = offcanvas.getContext("2d");
-
-                    var brush = offctx.createLinearGradient(0,0,100,100);
-                    brush.addColorStop(0,"red");
-                    brush.addColorStop(0.5,"yellow");
-                    brush.addColorStop(1,"blue");
-                    offctx.fillStyle = brush;
-                    offctx.fillRect(0,0,100,100);
-
-                    ctx.fillStyle = ctx.createPattern(offcanvas, "repeat");
-                    ctx.fillRect(10,10,380,180);
-                }
+// 이미지를 숨겨놓고 읽어와 사용하기
+function draw_imageload3() {
+    var img = document.getElementById("bogu");
+    ctx.drawImage(img, 50, 0);
+}

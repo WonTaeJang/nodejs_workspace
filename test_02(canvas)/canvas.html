@@ -84,7 +84,8 @@
                     //draw_imagepattern4();
                     //draw_revert();
                     //draw_dataurl();
-                    draw_clipping();
+                    //draw_clipping();
+                    draw_clipping2();
                 }
                 function draw(){
                     // draw rect
@@ -141,6 +142,18 @@
                         ctx.arc(200,100,100,0,2*Math.PI,true);
                         ctx.clip();
                         ctx.drawImage(img, 50, 0);
+                    }
+                }
+
+                function draw_clipping2(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.beginPath();
+                        ctx.arc(100,100,80,0,2*Math.PI, true);
+                        ctx.rect(200,50,100,100);
+                        ctx.clip();
+                        ctx.drawImage(img,50,0);
                     }
                 }
 

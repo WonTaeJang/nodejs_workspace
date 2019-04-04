@@ -85,7 +85,9 @@
                     //draw_revert();
                     //draw_dataurl();
                     //draw_clipping();
-                    draw_clipping2();
+                    //draw_clipping2();
+                    //draw_clipping3();
+                    draw_clipping4();
                 }
                 function draw(){
                     // draw rect
@@ -154,6 +156,43 @@
                         ctx.rect(200,50,100,100);
                         ctx.clip();
                         ctx.drawImage(img,50,0);
+                    }
+                }
+
+                // 문자열 클리핑
+                function draw_clipping3(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.beginPath();
+                        ctx.arc(200,100,100,0,2*Math.PI, true);
+                        ctx.clip();
+                        ctx.drawImage(img,50,0);
+
+                        ctx.font = "80px 궁서";
+                        ctx.textAlign = "center";
+                        ctx.fillStyle = "red";
+                        ctx.fillText("코스모스",200,100);
+                    }
+                }
+
+                // 클리핑 해제상태
+                function draw_clipping4(){
+                    var img = new Image();
+                    img.src = "bogu.jpg";
+                    img.onload = function(){
+                        ctx.beginPath();
+                        ctx.arc(200,100,100,0,2*Math.PI,true);
+                        ctx.save();
+                        ctx.clip();
+                        ctx.drawImage(img,50,0);
+
+                        ctx.restore();
+
+                        ctx.font = "80px 궁서";
+                        ctx.textAlign = "center";
+                        ctx.fillStyle = "red";
+                        ctx.fillText("코스모스",200,100);
                     }
                 }
 

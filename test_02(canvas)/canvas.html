@@ -87,7 +87,8 @@
                     //draw_clipping();
                     //draw_clipping2();
                     //draw_clipping3();
-                    draw_clipping4();
+                    //draw_clipping4();
+                    draw_translate();
                 }
                 function draw(){
                     // draw rect
@@ -194,6 +195,15 @@
                         ctx.fillStyle = "red";
                         ctx.fillText("코스모스",200,100);
                     }
+                }
+
+                function draw_translate(){
+                    ctx.fillStyle = "blue";
+                    ctx.fillRect(50,50,30,30);
+
+                    ctx.translate(50,50);
+                    ctx.fillStyle = "red";
+                    ctx.fillRect(50,50,30,30);
                 }
 
                 </script>

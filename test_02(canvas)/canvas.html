@@ -88,7 +88,9 @@
                     //draw_clipping2();
                     //draw_clipping3();
                     //draw_clipping4();
-                    draw_translate();
+                    //draw_translate();
+                    //draw_translate2();
+                    draw_translate3();
                 }
                 function draw(){
                     // draw rect
@@ -204,6 +206,23 @@
                     ctx.translate(50,50);
                     ctx.fillStyle = "red";
                     ctx.fillRect(50,50,30,30);
+                }
+
+                function draw_translate2(){
+                    ctx.fillStyle = "blue";
+                    for(var i = 0; i < 6; i++){
+                        ctx.fillRect(50,50,30,30);
+                        ctx.translate(50,0);
+                    }
+                }
+
+                // 캔버스 중앙에 그리기
+                function draw_translate3(){
+                    ctx.fillStyle = "blue";
+                    ctx.translate(canvas.width/2, canvas.height/2);
+                    ctx.beginPath();
+                    ctx.arc(0,0,80,0,2*Math.PI);
+                    ctx.fill();
                 }
 
                 </script>

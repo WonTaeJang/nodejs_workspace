@@ -90,7 +90,10 @@
                     //draw_clipping4();
                     //draw_translate();
                     //draw_translate2();
-                    draw_translate3();
+                    //draw_translate3();
+                    //draw_Scale();
+                    //draw_transorder();
+                    draw_mirroring();
                 }
                 function draw(){
                     // draw rect
@@ -223,6 +226,43 @@
                     ctx.beginPath();
                     ctx.arc(0,0,80,0,2*Math.PI);
                     ctx.fill();
+                }
+
+                // 확대 변환 
+                function draw_Scale(){
+                    ctx.fillStyle = "blue";
+                    ctx.fillRect(50,50,30,30);
+
+                    ctx.scale(2,2);
+                    ctx.fillStyle = "red";
+                    ctx.fillRect(50,50,30,30);
+                }
+
+                // 변환의 순서 연구
+                function draw_transorder(){
+                    ctx.fillStyle = "blue";
+                    ctx.fillRect(10,10,30,30);
+
+                    ctx.translate(50,50);
+                    ctx.scale(2,2);
+                    ctx.fillStyle = "red";
+                    ctx.fillRect(10,10,30,30);
+
+                    ctx.setTransform(1,0,0,1,0,0);
+                    ctx.scale(2,2);
+                    ctx.translate(50,50);
+                    ctx.fillStyle = "green";
+                    ctx.fillRect(10,10,30,30);
+                }
+
+                function draw_mirroring(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.translate(100,0);
+                        ctx.scale(-1,1);
+                        ctx.drawImage(img,0,0);
+                    }
                 }
 
                 </script>

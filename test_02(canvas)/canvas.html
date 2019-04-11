@@ -95,7 +95,9 @@
                     //draw_transorder();
                     //draw_mirroring();
                     //draw_rotate();
-                    draw_rotate2();
+                    //draw_rotate2();
+                    //draw_center();
+                    draw_matrix();
                 }
                 function draw(){
                     // draw rect
@@ -288,6 +290,37 @@
                         ctx.translate(-canvas.width/2, -canvas.height/2);
                         ctx.drawImage(img,120,0);
                     }
+                }
+
+                CanvasRenderingContext2D.prototype.rotateCenter = function (deg, x, y) {
+                        ctx.translate(x, y);
+                        ctx.rotate(deg * Math.PI / 180);
+                        ctx.translate(-x, -y);
+                    }
+
+                // rotate center
+                function draw_center(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.rotateCenter(30, canvas.width/2, canvas.height/2);
+                        ctx.drawImage(img,120,0);
+                    }
+                }
+
+                // matrix
+                function draw_matrix(){
+                    ctx.fillStyle = "blue";
+                    ctx.fillRect(50,50,30,30);
+
+                    ctx.setTransform(1,0,0,1,50,50);
+                    ctx.fillStyle = "red";
+                    ctx.fillRect(50,50,30,30);
+
+                    ctx.setTransform(3,0,0,2,0,0);
+                    ctx.fillStyle = "green";
+                    ctx.fillRect(50,50,30,30);
+
                 }
 
                 </script>

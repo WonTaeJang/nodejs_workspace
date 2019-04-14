@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
-	<title>keydown</title>
+	<title>keypress</title>
 	<style>
 		canvas {border:5px solid magenta;}
 	</style>
@@ -22,24 +22,48 @@
             if(canvas == null || canvas.getContext == null) return;
             ctx = canvas.getContext("2d");
             draw();
+            setInterval(update, 50);
         }
 
-        window.onkeydown = function(e) {
-            switch(e.keyCode){
-                case 38: y -= 3; break;
-                case 40: y += 3; break;
-                case 37: x -= 3; break;
-                case 39: x += 3; break;
-                case 32: 
-                    if(color == "yellow"){
-                        color = "blue";
-                    }
-                    else{
-                        color = "yellow";
-                    }
-                    break;
+        window.onkeydown = function(e){
+            keyPressed[e.keyCode] = true;
+        }
+
+        window.onkeyup = function(e){
+            keyPressed[e.keyCode] = false;
+        }
+
+        function update(){
+            var press = false;
+            if(keyPressed[38]){
+                y -= 3;
+                press = true;
             }
-            draw();
+            if (keyPressed[40]) {
+				y += 3;
+				press = true;
+			}
+			if (keyPressed[37]) {
+				x -= 3;
+				press = true;
+			}
+			if (keyPressed[39]) {
+				x += 3;
+				press = true;
+			}
+            if (keyPressed[32]){
+                if(color == "yellow"){
+                    color = "blue";
+                } else {
+                    color = "yellow"
+                }
+                press = true;
+            }
+
+            if(press){
+                draw();
+            } 
+
         }
 
         function draw(){

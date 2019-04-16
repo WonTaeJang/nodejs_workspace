@@ -97,7 +97,8 @@
                     //draw_rotate();
                     //draw_rotate2();
                     //draw_center();
-                    draw_matrix();
+                    //draw_matrix();
+                    draw_canvassize();
                 }
                 function draw(){
                     // draw rect
@@ -321,6 +322,14 @@
                     ctx.fillStyle = "green";
                     ctx.fillRect(50,50,30,30);
 
+                }
+
+                function draw_canvassize(){
+                    var img = new Image();
+                    img.src = "cosmos.jpg";
+                    img.onload = function(){
+                        ctx.drawImage(img,0,0);
+                    }
                 }
 
                 </script>

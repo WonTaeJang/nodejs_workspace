@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<title>mousedown</title>
 	<style>
-		canvas {border:5px solid magenta;}
+		canvas {border:1px solid magenta;}
 	</style>
 </head>
 <body>
@@ -15,21 +15,37 @@
         var ctx;
         var x = 200;
         var y = 100;
-		window.onload = function() {
-			canvas = document.getElementById("canvas");
-			if (canvas == null || canvas.getContext == null) return;
-			ctx = canvas.getContext("2d");
-			canvas.onmousedown = onmousedown;
-			draw();
-		}
-        
-		function onmousedown(e) {
-			e.preventDefault();
-			e.stopPropagation();
-			x = e.clientX;
-			y = e.clientY;
-			draw();
-		}
+        window.onload = function(){
+            canvas = document.getElementById("canvas");
+            if(canvas == null || canvas.getContext == null) return;
+            ctx = canvas.getContext("2d");
+            canvas.onmousedown = onmousedown;
+            draw();
+        }
+
+        // function onmousedown(e){
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     x = e.clientX;
+        //     y = e.clientY;
+        //     draw();
+        // }
+
+        function canvasX(clientX){
+            return clientX - canvas.offsetLeft;
+        }
+
+        function canvasY(clientY){
+            return clientY - canvas.offsetTop;
+        }
+
+        function onmousedown(e){
+            e.preventDefault();
+            e.stopPropagation();
+            x = canvasX(e.clientX);
+            y = canvasY(e.clientY);
+            draw();
+        }
 
         function draw(){
             ctx.clearRect(0,0,canvas.width, canvas.height);

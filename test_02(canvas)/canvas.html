@@ -98,7 +98,8 @@
                     //draw_rotate2();
                     //draw_center();
                     //draw_matrix();
-                    draw_canvassize();
+                    //draw_canvassize();
+                    draw_fillmode();
                 }
                 function draw(){
                     // draw rect
@@ -330,6 +331,18 @@
                     img.onload = function(){
                         ctx.drawImage(img,0,0);
                     }
+                }
+
+                function draw_fillmode(){
+                    ctx.beginPath();
+                    ctx.rect(10,10,180,180);
+                    ctx.arc(100,100,50,0,2*Math.PI, true);
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.rect(210,10,180,180);
+                    ctx.arc(300,100,50,0,2*Math.PI, false);
+                    ctx.fill();
                 }
 
                 </script>

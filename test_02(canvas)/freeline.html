@@ -67,6 +67,18 @@
             canvas.onmouseup = function(e){
                 drawing = false;
             }
+
+            function canvasX(clientX){
+                var bound = canvas.getBoundingClientRect();
+                var bw = 5;
+                return (clientX - bound.left - bw) * (canvas.width / (bound.width - bw *2));
+            }
+
+            function canvasY(clientY){
+                var bound = canvas.getBoundingClientRect();
+                var bw = 5;
+                return (clientY - bound.top - bw) * (canvas.height / (bound.height - bw *2));
+            }
         }
     </script>
 </body>

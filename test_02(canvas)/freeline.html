@@ -17,10 +17,10 @@
             <option value="magenta">분홍</option>    
         </select>
         굵기 : 
-        <select>
+        <select id = "selwidth">
             <option value="1">얇게</option>
-            <option value="2">중간</option>
-            <option value="3">굵게</option>
+            <option value="3">중간</option>
+            <option value="5">굵게</option>
         </select>
 
         <input type="button" id="clear" value="모두지움"/>
@@ -78,6 +78,24 @@
                 var bound = canvas.getBoundingClientRect();
                 var bw = 5;
                 return (clientY - bound.top - bw) * (canvas.height / (bound.height - bw *2));
+            }
+
+            // 선 색상 변경
+            var selcolor = document.getElementById("selcolor");
+            selcolor.onchange = function(e){
+                ctx.strokeStyle = selcolor.value;
+            }
+
+            // 선 굵기 변경
+            var selwidth = document.getElementById("selwidth");
+            selwidth.onchange = function(e){
+                ctx.lineWidth = selWidth.value;
+            }
+
+            // 모두 지우기 
+            var btnclear = document.getElementById("clear");
+            btnclear.onclick = function(e){
+                ctx.clearRect(0,0,canvas.width, canvas.height);
             }
         }
     </script>

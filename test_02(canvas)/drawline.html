@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>freeline</title>
+    <style>
+        canvas {border:5px solid magenta;}
+    </style>
+</head>
+<body>
+    <div>
+        색상 :  
+        <select id = "selcolor">
+            <option value="black">검정</option>    
+            <option value="red">빨강</option>    
+            <option value="green">초록</option>    
+            <option value="blue">파랑</option>    
+            <option value="magenta">분홍</option>    
+        </select>
+        굵기 : 
+        <select id = "selwidth">
+            <option value="1">얇게</option>
+            <option value="3">중간</option>
+            <option value="5">굵게</option>
+        </select>
+
+        <input type="button" id="clear" value="모두지움"/>
+    </div>
+
+    <canvas id="canvas" width="600" height="400">
+        이 브라우저는 캔버스를 지원하지 않습니다 .
+    </canvas>
+
+    <script>
+        var canvas;
+        var ctx;
+        var sx, sy;
+        var drawing = false;
+
+        
+            // 선 색상 변경
+            var selcolor = document.getElementById("selcolor");
+            selcolor.onchange = function(e){
+                ctx.strokeStyle = selcolor.value;
+            }
+
+            // 선 굵기 변경
+            var selwidth = document.getElementById("selwidth");
+            selwidth.onchange = function(e){
+                ctx.lineWidth = selWidth.value;
+            }
+
+            // 모두 지우기 
+            var btnclear = document.getElementById("clear");
+            btnclear.onclick = function(e){
+                ctx.clearRect(0,0,canvas.width, canvas.height);
+            }
+        }
+    </script>
+</body>

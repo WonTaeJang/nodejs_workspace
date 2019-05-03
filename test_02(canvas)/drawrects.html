@@ -53,21 +53,45 @@
             return -1;
         }
 
+        // 화면 지우고 모든 도형을 순서대로 다 그림
+        function drawRects(){
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            for(var i = 0; i < arRectangle.length; i++){
+                var r = arRectangle[i];
+                ctx.fillStyle = r.color;
+                ctx.fillRect(r.sx, r.sy, r.ex-r.sx, r.ey-r.sy);
+                ctx.strokeStyle(r.sx, r.sy, r.ex-r.sx, r.ey-r.sy);
+            }
+        }
+
         window.onload = function(){
             canvas = document.getElementById("canvas");
             if(canvas == null || canvas.getContext == null) return;
             ctx = canvas.getContext("2d");
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 2;
+            color = "rgba(255,255,0,0.5)";
+            ctx.fillStyle = color;
 
             canvas.onmousedown = function(e){
                 e.preventDefault();
 
-                // 시작 좌표 구함
+                // 클릭한 좌표 구하고 그 위치에 도형이 있는지 조사
                 sx = canvasX(e.clientX);
                 sy = canvasY(e.clientY);
+                moving = getRectangle(sx, sy);
 
-                // 백업 뜨고 그리기 시작
-                backup = ctx.getImageData(0,0,canvas.width, canvas.height);
-                drawing = true;
+                // 상대적인 마우스 이동 거리만큼 도형 이동
+                if (moving != -1){
+                    var r = arRectangle[moving];
+                    r.sx += (ex - sx);
+                    r.sy += (ey - sy);
+                    r.ex += (ex - sx);
+                    r.ey += (ey - sy);
+                    sx = ex;
+                    sy = ey;
+                    drawRects();
+                }
             }
 
             canvas.onmousemove = function(e){

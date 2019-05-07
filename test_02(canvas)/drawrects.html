@@ -81,16 +81,9 @@
                 sy = canvasY(e.clientY);
                 moving = getRectangle(sx, sy);
 
-                // 상대적인 마우스 이동 거리만큼 도형 이동
-                if (moving != -1){
-                    var r = arRectangle[moving];
-                    r.sx += (ex - sx);
-                    r.sy += (ey - sy);
-                    r.ex += (ex - sx);
-                    r.ey += (ey - sy);
-                    sx = ex;
-                    sy = ey;
-                    drawRects();
+                // 도형을 클릭한 것이 아니면 그리기 시작
+                if(moving == -1){
+                    drawing = true;
                 }
             }
 
@@ -99,18 +92,32 @@
                 ex = canvasX(e.clientX);
                 ey = canvasY(e.clientY);
                 
-                // 백업 복구하고 현재선 그림
+                // 화면 다시 그리고 현재 도형 그림
                 if(drawing){
-                    ctx.putImageData(backup, 0,0);
-                    ctx.beginPath();
-                    ctx.moveTo(sx,sy);
-                    ctx.lineTo(ex,ey);
-                    ctx.stroke();
+                    drawRects();
+                    ctx.fillStyle = color;
+                    ctx.fillRect(sx, sy, ex-sx, ey-sy);
+                    ctx.strokeStyle(sx, sy, ex-sx, ey - sy);
+                }
+
+                // 상대적인 마우스 이동 거리만큼 도형 이동
+                if(moving != -1){
+                    var r = arRectangle[moving];
+                    r.sx += (ex - sx);
+                    r.sy += (ey - sy);
+                    r.ex += (ex - sx);
+                    r.ey += (sy - sy);
+                    sx = ex;
+                    sy = ey;
+                    drawRects();
                 }
             }
 
             canvas.onmouseup = function(e){
-                drawing = false;
+                // 좌표 정규화해서 새로운 도형을 배열에 추가
+                if(drawing){
+                    
+                }
             }
         }
 
